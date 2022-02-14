@@ -1,0 +1,27 @@
+{
+  "menu": [
+    {
+      "img": "img/tabs/vegy.jpg",
+      "altimg": "vegy",
+      "title": "Event 1",
+      "descr": "Event 1",
+      "price": 9
+    },
+    {
+      "img": "img/tabs/post.jpg",
+      "altimg": "post",
+      "title": "Event 2",
+      "descr": "Event 2",
+      "price": 14
+    },
+    {
+      "img": "img/tabs/elite.jpg",
+      "altimg": "elite",
+      "title": "Event 3",
+      "descr": "Event 3",
+      "price": 21
+    }
+  ],
+  "requests": [
+  ]
+}
