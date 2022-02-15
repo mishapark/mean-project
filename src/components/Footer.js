@@ -81,7 +81,7 @@ const Footer = () => {
               pt={{ xs: 5, sm: 10 }}
               pb={{ xs: 5, sm: 10 }}
             >
-              YelpLike Website
+              Bite.ca Website Rights Reserved
             </Box>
           </Container>
         </Box>
