@@ -10,15 +10,7 @@ const Footer = () => {
       <footer>
         <Box
           component="footer"
-          sx={{
-            py: 3,
-            px: 2,
-            mt: "auto",
-            backgroundColor: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.grey[200]
-                : theme.palette.grey[800],
-          }}
+
           // px={{ xs: 3, sm: 10 }}
           // py={{ xs: 5, sm: 10 }}
           // color="white"

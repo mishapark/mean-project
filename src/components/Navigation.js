@@ -21,7 +21,7 @@ const Navigation = () => {
               variant="h6"
               underline="none"
               href="/"
-              sx={rightLink}
+              sx={{ ...rightLink, fontWeight: "bold" }}
             >
               {"Home"}
             </Link>
@@ -30,7 +30,7 @@ const Navigation = () => {
               variant="h6"
               underline="none"
               href="/restraunts"
-              sx={{ ...rightLink, color: "secondary.main" }}
+              sx={{ ...rightLink, color: "#e62958", fontWeight: "bold" }}
             >
               {"Restraunts"}
             </Link>
@@ -39,7 +39,7 @@ const Navigation = () => {
               variant="h6"
               underline="none"
               href="/events"
-              sx={{ ...rightLink, color: "secondary.main" }}
+              sx={{ ...rightLink, color: "#e62958", fontWeight: "bold" }}
             >
               {"Events"}
             </Link>
@@ -48,7 +48,7 @@ const Navigation = () => {
               variant="h6"
               underline="none"
               href="/blog"
-              sx={{ ...rightLink, color: "secondary.main" }}
+              sx={{ ...rightLink, color: "#e62958", fontWeight: "bold" }}
             >
               {"Blog"}
             </Link>
@@ -68,7 +68,7 @@ const Navigation = () => {
               variant="h6"
               underline="none"
               href="/login"
-              sx={rightLink}
+              sx={{ ...rightLink, fontWeight: "bold" }}
             >
               {"Login"}
             </Link>
@@ -76,7 +76,7 @@ const Navigation = () => {
               variant="h6"
               underline="none"
               href="/signup"
-              sx={{ ...rightLink, color: "secondary.main" }}
+              sx={{ ...rightLink, color: "#e62958", fontWeight: "bold" }}
             >
               {"Sign Up"}
             </Link>
