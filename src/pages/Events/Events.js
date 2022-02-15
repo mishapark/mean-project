@@ -1,20 +1,20 @@
-import './css/style.css';
-import tabs from './js/modules/tabs';
-import modal from './js/modules/modal';
-import timer from './js/modules/timer';
-import cards from './js/modules/cards';
-import calc from './js/modules/calc';
-import forms from './js/modules/forms';
-import slider from './js/modules/slider';
-import {openModal} from './js/modules/modal';
-import SidePanel from './SidePanel';
-import EventHeader from './EventHeader';
-import Preview from './Preview';
-import Offers from './Offers';
-import Order from './Order';
-import Promotion from './Promotion';
-import EventFooter from './EventFooter';
-import ContactUs from './ContactUs';
+import './Events.css';
+import tabs from '../../components/Tabs';
+import modal from '../../components/Modal';
+import timer from '../../components/Timer';
+import cards from '../../components/Cards';
+import calc from '../../components/Calc';
+import forms from '../../components/Forms';
+import slider from '../../components/Slider';
+import {openModal} from '../../components/Modal';
+import SidePanel from '../../components/SidePanel';
+import Preview from '../../components/Preview';
+import Offers from '../../components/Offers';
+import Order from '../../components/Order';
+import Promotion from '../../components/Promotion';
+import ContactUs from '../../components/ContactUs';
+import Navigation from "..//../components/Navigation";
+import Footer from "..//../components/Footer";
 
 const Events = () => {
 
@@ -40,7 +40,7 @@ const Events = () => {
     });
     return (
         <div>
-            <EventHeader />
+            <Navigation />
             <SidePanel />
             <Preview />
             <div className="divider"></div>
@@ -49,8 +49,8 @@ const Events = () => {
             <Order />
             <div className="divider"></div>
             <Promotion />
-            <EventFooter />
             <ContactUs />
+            <Footer />
         </div>
         
  );

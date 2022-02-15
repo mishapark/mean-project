@@ -1,5 +1,5 @@
-import {closeModal, openModal} from './modal';
-import {postData} from '../services/services';
+import {closeModal, openModal} from './Modal';
+import {postData} from './Services';
 function forms(formsSelector, modalTimerId) {
     const forms = document.querySelectorAll(formsSelector);
     const message = {
