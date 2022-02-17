@@ -1,3 +1,4 @@
+
 import {closeModal, openModal} from './Modal';
 import {postData} from './Services';
 function forms(formsSelector, modalTimerId) {

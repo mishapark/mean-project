@@ -1,18 +1,17 @@
 import './Events.css';
-import tabs from '../../components/Tabs';
-import modal from '../../components/Modal';
-import timer from '../../components/Timer';
-import cards from '../../components/Cards';
-import calc from '../../components/Calc';
-import forms from '../../components/Forms';
-import slider from '../../components/Slider';
-import {openModal} from '../../components/Modal';
-import SidePanel from '../../components/SidePanel';
-import Preview from '../../components/Preview';
-import Offers from '../../components/Offers';
-import Order from '../../components/Order';
-import Promotion from '../../components/Promotion';
-import ContactUs from '../../components/ContactUs';
+import tabs from '../../components/Events/Tabs';
+import modal from '../../components/Events/Modal';
+import timer from '../../components/Events/Timer';
+import cards from '../../components/Events/Cards';
+import calc from '../../components/Events/Calc';
+import forms from '../../components/Events/Forms';
+import {openModal} from '../../components/Events/Modal';
+import SidePanel from '../../components/Events/SidePanel';
+import Preview from '../../components/Events/Preview';
+import Offers from '../../components/Events/Offers';
+import Order from '../../components/Events/Order';
+import Promotion from '../../components/Events/Promotion';
+import ContactUs from '../../components/Events/ContactUs';
 import Navigation from "..//../components/Navigation";
 import Footer from "..//../components/Footer";
 
@@ -27,17 +26,10 @@ const Events = () => {
         cards();
         calc();
         forms('form', modalTimerId);
-        slider({
-            container: '.offer__slider',
-            slide: '.offer__slide',
-            nextArrow: '.offer__slider-next',
-            prevArrow: '.offer__slider-prev',
-            totalCounter: '#total',
-            currentCounter: '#current',
-            wrapper: '.offer__slider-wrapper',
-            field: '.offer__slider-inner'
-        });
+       
     });
+
+    
     return (
         <div>
             <Navigation />

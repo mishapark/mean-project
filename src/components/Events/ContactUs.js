@@ -1,8 +1,10 @@
+import '..//..//pages/Events/Events.css';
 const ContactUs = () => {
-
+    
     return (
-
+        
         <div className="modal">
+            
                 <div className="modal__dialog">
                     <div className="modal__content">
                         <form action="#">

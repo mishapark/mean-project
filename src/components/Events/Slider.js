@@ -2,6 +2,8 @@ function slider({container, slide, nextArrow, prevArrow, totalCounter, currentCo
     let offset = 0;
     let slideIndex = 1;
 
+    
+
     const slides = document.querySelectorAll(slide),
         slider = document.querySelector(container),
         prev = document.querySelector(prevArrow),
@@ -67,7 +69,7 @@ function slider({container, slide, nextArrow, prevArrow, totalCounter, currentCo
             opacity: .5;
             transition: opacity .6s ease;
         `;
-        if (i == 0) {
+        if (i === 0) {
             dot.style.opacity = 1;
         }
         indicators.append(dot);
@@ -75,7 +77,8 @@ function slider({container, slide, nextArrow, prevArrow, totalCounter, currentCo
     }
 
     next.addEventListener('click', () => {
-        if (offset == (deleteNotDigits(width) * (slides.length - 1))) {
+        console.log("I am here");
+        if (offset === (deleteNotDigits(width) * (slides.length - 1))) {
             offset = 0;
         } else {
             offset += deleteNotDigits(width); 
@@ -83,7 +86,7 @@ function slider({container, slide, nextArrow, prevArrow, totalCounter, currentCo
 
         slidesField.style.transform = `translateX(-${offset}px)`;
 
-        if (slideIndex == slides.length) {
+        if (slideIndex === slides.length) {
             slideIndex = 1;
         } else {
             slideIndex++;
@@ -100,7 +103,7 @@ function slider({container, slide, nextArrow, prevArrow, totalCounter, currentCo
     });
 
     prev.addEventListener('click', () => {
-        if (offset == 0) {
+        if (offset === 0) {
             offset = deleteNotDigits(width) * (slides.length - 1);
         } else {
             offset -= deleteNotDigits(width);
@@ -108,7 +111,7 @@ function slider({container, slide, nextArrow, prevArrow, totalCounter, currentCo
 
         slidesField.style.transform = `translateX(-${offset}px)`;
 
-        if (slideIndex == 1) {
+        if (slideIndex === 1) {
             slideIndex = slides.length;
         } else {
             slideIndex--;
