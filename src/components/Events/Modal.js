@@ -27,7 +27,8 @@ function modal(triggerSelector, modalSelector, modalTimerId) {
     });
 
     modal.addEventListener('click', (e) => {
-        if (e.target === modal || e.target.getAttribute('data-close') == "") {
+        if (e.target === modal  || e.target.getAttribute('data-close') === "true") {
+            
             closeModal(modalSelector);
         }
     });

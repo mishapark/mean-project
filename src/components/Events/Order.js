@@ -1,3 +1,4 @@
+import '..//..//pages/Events/Events.css';
 const Order = () => {
 
     return (
