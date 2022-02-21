@@ -13,7 +13,7 @@ import { Container } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 import Navigation from "../components/Navigation/Navigation";
-import Footer from "../components/Footer";
+import Footer from "../components/Footer/Footer";
 import { spacing, typography } from "@mui/system";
 
 const useStyles = makeStyles((theme) => ({

@@ -5,7 +5,7 @@ import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";
 import Events from "./pages/Events/Events";
 import Navigation from "./components/Navigation/Navigation";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({

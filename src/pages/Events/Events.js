@@ -12,8 +12,6 @@ import Offers from "../../components/Events/Offers";
 import Order from "../../components/Events/Order";
 import Promotion from "../../components/Events/Promotion";
 import ContactUs from "../../components/Events/ContactUs";
-import Navigation from "../../components/Navigation/Navigation";
-import Footer from "..//../components/Footer";
 
 const Events = () => {
   window.addEventListener("DOMContentLoaded", function () {
