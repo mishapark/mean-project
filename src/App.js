@@ -7,6 +7,7 @@ import Events from "./pages/Events/Events";
 import Navigation from "./components/Navigation/Navigation";
 import Footer from "./components/Footer/Footer";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Container } from "@mui/material";
 
 const theme = createTheme({
   palette: {
@@ -28,13 +29,15 @@ function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Navigation />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          {/* <Route path='/' element={<Login/>} /> */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/signup" element={<Singup />} />
-        </Routes>
+        <Container disableGutters sx={{ paddingTop: 10, paddingBottom: 10 }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            {/* <Route path='/' element={<Login/>} /> */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/signup" element={<Singup />} />
+          </Routes>
+        </Container>
         <Footer />
       </BrowserRouter>
     </ThemeProvider>

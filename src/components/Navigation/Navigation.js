@@ -41,7 +41,7 @@ const Navigation = () => {
   };
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container disableGutters>
         <Toolbar disableGutters sx={styles.toolbar}>
           <Box component={"div"} sx={styles.logo}>
             <Link to="/" style={{ display: "inherit" }}>

@@ -43,9 +43,9 @@
   box-sizing: border-box;
   width: 100%;
   text-align: left;
-  font: bold 16px sans-serif;
   padding: 55px 50px;
   min-height: 100px;
+  margin-top: auto;
 }
 
 .footer-distributed .footer-left,
@@ -63,7 +63,7 @@
 
 .footer-distributed .footer-company-name {
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: normal;
 }
 
@@ -97,7 +97,7 @@
 .footer-distributed .footer-center p span {
   display: block;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 2;
 }
 
@@ -129,7 +129,7 @@
 .footer-distributed .footer-company-about {
   line-height: 20px;
   color: #92999f;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: normal;
   margin: 0;
 }
@@ -137,7 +137,7 @@
 .footer-distributed .footer-company-about span {
   display: block;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 20px;
 }
