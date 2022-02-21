@@ -12,7 +12,7 @@ import { Button } from "@mui/material";
 import { Container } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
-import Navigation from "../components/Navigation";
+import Navigation from "../components/Navigation/Navigation";
 import Footer from "../components/Footer";
 import { spacing, typography } from "@mui/system";
 
@@ -48,7 +48,6 @@ export const Home = () => {
   return (
     <div>
       <CssBaseline />
-      <Navigation />
       <main>
         <div className={classes.container}>
           <Container maxWidth="sm">
@@ -117,7 +116,6 @@ export const Home = () => {
           </Grid>
         </Container>
       </main>
-      <Footer />
     </div>
   );
 };
