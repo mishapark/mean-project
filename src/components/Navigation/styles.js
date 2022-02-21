@@ -1,4 +1,4 @@
-export default {
+const style = {
   logoLink: {
     height: 55,
     mr: 2,
@@ -36,3 +36,4 @@ export default {
     },
   },
 };
+export default style;

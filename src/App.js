@@ -4,10 +4,10 @@ import { Singup } from "./pages/Singup";
 import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";
 import Events from "./pages/Events/Events";
+import Restaurants from "./pages/Restaurants";
 import Navigation from "./components/Navigation/Navigation";
 import Footer from "./components/Footer/Footer";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Container } from "@mui/material";
 
 const theme = createTheme({
   palette: {
@@ -29,15 +29,14 @@ function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Navigation />
-        <Container disableGutters sx={{ paddingTop: 10, paddingBottom: 10 }}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {/* <Route path='/' element={<Login/>} /> */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/signup" element={<Singup />} />
-          </Routes>
-        </Container>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {/* <Route path='/' element={<Login/>} /> */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/restaurants" element={<Restaurants />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/signup" element={<Singup />} />
+        </Routes>
         <Footer />
       </BrowserRouter>
     </ThemeProvider>

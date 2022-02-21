@@ -1,0 +1,10 @@
+.container {
+  height: 100vh;
+  min-width: 35%;
+  z-index: 1;
+  padding: 20px;
+  overflow: auto;
+}
+.container::-webkit-scrollbar {
+  display: none;
+}

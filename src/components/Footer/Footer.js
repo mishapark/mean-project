@@ -27,12 +27,12 @@ const Footer = () => {
         <div className="footer-left">
           <Box component={"div"} sx={styles.logo}>
             <Link to="/" style={{ display: "inherit" }}>
-              <img src={Logo} style={styles.logo} />
+              <img src={Logo} style={styles.logo} alt="" />
             </Link>
           </Box>
           <Box sx={styles.nav}>
             {pages.map((page) => (
-              <Link key={page} to={page.link}>
+              <Link key={page.name} to={page.link}>
                 <Button sx={styles.button}>{page.name}</Button>
               </Link>
             ))}
@@ -64,16 +64,32 @@ const Footer = () => {
             awesome restaurants in your city!
           </p>
           <div className="footer-icons">
-            <a href="#">
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FacebookIcon color="secondary" />
             </a>
-            <a href="#">
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <LinkedInIcon color="secondary" />
             </a>
-            <a href="#">
+            <a
+              href="https://www.twitter.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <TwitterIcon color="secondary" />
             </a>
-            <a href="#">
+            <a
+              href="https://www.github.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <GitHubIcon color="secondary" />
             </a>
           </div>

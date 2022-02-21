@@ -1,4 +1,4 @@
-export default {
+const style = {
   logo: {
     height: 55,
   },
@@ -29,3 +29,4 @@ export default {
     flexDirection: { xs: "column", md: "row" },
   },
 };
+export default style;

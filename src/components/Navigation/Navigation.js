@@ -40,17 +40,17 @@ const Navigation = () => {
     setAnchorElUser(null);
   };
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Container disableGutters>
         <Toolbar disableGutters sx={styles.toolbar}>
           <Box component={"div"} sx={styles.logo}>
             <Link to="/" style={{ display: "inherit" }}>
-              <img src={Logo} style={styles.logo} />
+              <img src={Logo} style={styles.logo} alt="" />
             </Link>
           </Box>
           <Box sx={styles.nav}>
             {pages.map((page) => (
-              <Link key={page} to={page.link} onClick={handleCloseNavMenu}>
+              <Link key={page.name} to={page.link} onClick={handleCloseNavMenu}>
                 <Button sx={styles.button}>{page.name}</Button>
               </Link>
             ))}
@@ -78,7 +78,7 @@ const Navigation = () => {
             >
               {pages.map((page) => (
                 <MenuItem
-                  key={page}
+                  key={page.name}
                   onClick={handleCloseNavMenu}
                   sx={styles.menuItem}
                 >
