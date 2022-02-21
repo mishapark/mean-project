@@ -6,6 +6,9 @@ export default {
     my: 2,
     display: "block",
     color: "#fff",
+    "&:hover": {
+      color: "red",
+    },
   },
   nav: {
     display: "flex",
@@ -18,5 +21,11 @@ export default {
   },
   icon: {
     marginRight: 10,
+  },
+  container: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexDirection: { xs: "column", md: "row" },
   },
 };

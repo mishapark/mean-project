@@ -17,6 +17,9 @@ export default {
     my: 2,
     display: "block",
     color: "#fff",
+    "&:hover": {
+      color: "red",
+    },
   },
   toolbar: {
     display: "flex",
@@ -25,5 +28,11 @@ export default {
   nav: {
     display: { xs: "none", md: "flex" },
     flexGrow: 1,
+  },
+  menuItem: {
+    "&:hover": {
+      color: "red",
+      background: "#000",
+    },
   },
 };

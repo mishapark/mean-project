@@ -23,7 +23,7 @@ const pages = [
 const Footer = () => {
   return (
     <footer className="footer-distributed">
-      <Container disableGutters>
+      <Container disableGutters sx={styles.container}>
         <div className="footer-left">
           <Box component={"div"} sx={styles.logo}>
             <Link to="/" style={{ display: "inherit" }}>

@@ -77,7 +77,11 @@ const Navigation = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={styles.menuItem}
+                >
                   <Link to={page.link}>{page.name}</Link>
                 </MenuItem>
               ))}
@@ -105,7 +109,11 @@ const Navigation = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem
+                  key={setting}
+                  onClick={handleCloseUserMenu}
+                  sx={styles.menuItem}
+                >
                   <Link to={`/${setting}`}>
                     {setting.charAt(0).toUpperCase() + setting.slice(1)}
                   </Link>
