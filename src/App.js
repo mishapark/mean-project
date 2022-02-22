@@ -10,6 +10,7 @@ import Footer from "./components/Footer/Footer";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Careers } from "./pages/Careers";
 import { Career } from "./pages/Career";
+import Event from "./pages/Event";
 
 const theme = createTheme({
   palette: {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/restaurants" element={<Restaurants />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/event" element={<Event />} />
           <Route path="/signup" element={<Singup />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/career" element={<Career />} />

@@ -1,4 +1,6 @@
 import '..//..//pages/Events/Events.css';
+import Link from "@mui/material/Link";
+
 const Preview = () => {
 
     return (
@@ -34,7 +36,11 @@ const Preview = () => {
                         <div className="tabheader">
                             <h3>Choose your Event</h3>
                             <div className="tabheader__items">
-                                <div className="tabheader__item tabheader__item_active">Event 1</div>
+                                <div className="tabheader__item tabheader__item_active">
+                                    <Link href="/event" variant="body2">
+                                        Event 1
+                                    </Link>         
+                                </div>
                                 <div className="tabheader__item">Event 2</div>
                                 <div className="tabheader__item">Event 3</div>
                                 <div className="tabheader__item">Event 4</div>
