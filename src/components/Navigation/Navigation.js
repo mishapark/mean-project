@@ -19,6 +19,7 @@ const pages = [
   { name: "Restaurants", link: "/restaurants" },
   { name: "Events", link: "/events" },
   { name: "Blog", link: "/blog" },
+  { name: "Careers", link: "/careers" },
 ];
 const settings = ["signup", "login"];
 

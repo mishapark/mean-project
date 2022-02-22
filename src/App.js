@@ -8,6 +8,8 @@ import Restaurants from "./pages/Restaurants";
 import Navigation from "./components/Navigation/Navigation";
 import Footer from "./components/Footer/Footer";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Careers } from "./pages/Careers";
+import { Career } from "./pages/Career";
 
 const theme = createTheme({
   palette: {
@@ -36,6 +38,8 @@ function App() {
           <Route path="/restaurants" element={<Restaurants />} />
           <Route path="/events" element={<Events />} />
           <Route path="/signup" element={<Singup />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/career" element={<Career />} />
         </Routes>
         <Footer />
       </BrowserRouter>
