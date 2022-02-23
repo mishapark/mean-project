@@ -1,19 +1,11 @@
 import * as React from "react";
-import { Typography } from "@mui/material";
-import { Card } from "@mui/material";
-import { CardContent } from "@mui/material";
-import { CardMedia } from "@mui/material";
-import { CssBaseline } from "@mui/material";
-import { Grid } from "@mui/material";
-import { Container } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import Link from "@mui/material/Link";
 import MailOutlineIcon from '@mui/icons-material/MailOutlined';
 import { spacing} from "@mui/system";
-import { FormControl } from '@mui/material';
-import { InputLabel } from '@mui/material';
+import { FormControl, InputLabel, Container, Grid, CssBaseline, CardMedia, CardContent, Card, Typography, Button} from '@mui/material';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
-import { Button } from "@mui/material";
+import EventMap from "../components/Events/EventMap";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -92,7 +84,7 @@ export const Event = () => {
                     <Card className={classes.card}>
                         <CardContent className={classes.cardMedia}>
                             <Typography gutterBottom variant="h5">
-                               GoogleMap
+                               <EventMap/>
                             </Typography>
                         </CardContent>
                         

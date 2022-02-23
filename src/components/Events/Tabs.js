@@ -28,7 +28,7 @@ function tabs(tabsSelector, tabsContentSelector, tabsParentSelector, activeClass
         const target = event.target;
 		if(target && target.classList.contains(tabsSelector.slice(1))) {
             tabs.forEach((item, i) => {
-                if (target == item) {
+                if (target === item) {
                     hideTabContent();
                     showTabContent(i);
                 }
