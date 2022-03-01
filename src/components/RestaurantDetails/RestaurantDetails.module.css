@@ -1,0 +1,41 @@
+.upper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+  height: 30vh;
+  font-size: 18px;
+  background: url("https://static.vecteezy.com/system/resources/previews/001/959/920/non_2x/blurred-busy-restaurant-background-free-photo.JPG")
+    center bottom no-repeat;
+  background-size: cover;
+  padding-bottom: 40px;
+}
+
+.name {
+  margin-bottom: 10px;
+  font-size: 60px;
+}
+
+.tags {
+  color: black;
+  padding: 4px;
+  border-radius: 4px;
+  white-space: nowrap;
+  background-color: rgba(240, 240, 240, 1);
+  font-weight: bold;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ratingNumber {
+  font-size: 18px;
+  margin-left: 15px;
+}
+
+.time {
+  margin-top: 20px;
+}

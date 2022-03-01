@@ -10,6 +10,7 @@
   flex-shrink: 0;
 }
 .info {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -28,8 +29,27 @@
   align-items: center;
 }
 
+.option {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
 .img {
   border-radius: 5px;
   width: 100%;
   height: 100%;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.ratingNumber {
+  margin-left: 5px;
+}
+
+.restName:hover {
+  text-decoration: underline;
 }

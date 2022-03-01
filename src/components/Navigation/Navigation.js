@@ -7,6 +7,7 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
@@ -23,7 +24,7 @@ const pages = [
 ];
 const settings = ["signup", "login"];
 
-const Navigation = () => {
+const Navigation = ({ toogleNotifications }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const handleOpenNavMenu = (event) => {
@@ -40,6 +41,11 @@ const Navigation = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleNotificationToggle = () => {
+    toogleNotifications();
+  };
+
   return (
     <AppBar position="sticky">
       <Container disableGutters>
@@ -99,6 +105,11 @@ const Navigation = () => {
           </Link>
 
           <Box>
+            <Tooltip title="Open notifications">
+              <IconButton color="secondary" onClick={handleNotificationToggle}>
+                <NotificationsIcon />
+              </IconButton>
+            </Tooltip>
             <Tooltip title="Open settings">
               <IconButton color="secondary" onClick={handleOpenUserMenu}>
                 <AccountCircleIcon />
