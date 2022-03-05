@@ -1,10 +1,7 @@
 {
 	"folders": [
 		{
-			"path": "..\\..\\..\\..\\..\\mean-project-master"
-		},
-		{
-			"path": "..\\..\\..\\.."
+			"path": "..\\..\\.."
 		}
 	],
 	"settings": {}

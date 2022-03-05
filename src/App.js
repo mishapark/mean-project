@@ -11,6 +11,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Careers } from "./pages/Careers";
 import { Career } from "./pages/Career";
 import Event from "./pages/Event";
+import ContactUs from "./pages/ContactUs";
 
 const theme = createTheme({
   palette: {
@@ -42,6 +43,7 @@ function App() {
           <Route path="/signup" element={<Singup />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/career" element={<Career />} />
+          <Route path="/contact" element={<ContactUs />} />
         </Routes>
         <Footer />
       </BrowserRouter>

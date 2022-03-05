@@ -6,6 +6,7 @@ import { spacing} from "@mui/system";
 import { FormControl, InputLabel, Container, Grid, CssBaseline, CardMedia, CardContent, Card, Typography, Button} from '@mui/material';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
 import EventMap from "../components/Events/EventMap";
+import Map from "../components/Map/Map";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     cardGridWithTopBottom: {
         padding: "20px 0",
       },
-  
+
     card: {
       height: "100%",
       display: "flex",
@@ -80,16 +81,7 @@ export const Event = () => {
                     </Card>
                 </Grid> 
 
-                <Grid item>
-                    <Card className={classes.card}>
-                        <CardContent className={classes.cardMedia}>
-                            <Typography gutterBottom variant="h5">
-                               <EventMap/>
-                            </Typography>
-                        </CardContent>
-                        
-                    </Card>
-                </Grid> 
+                
             </Grid>
         </Container>
         <Container component="" maxWidth="lg" >

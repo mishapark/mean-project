@@ -20,6 +20,7 @@ const pages = [
   { name: "Events", link: "/events" },
   { name: "Blog", link: "/blog" },
   { name: "Careers", link: "/careers" },
+  { name: "Contact Us", link: "/contact" },
 ];
 const settings = ["signup", "login"];
 
