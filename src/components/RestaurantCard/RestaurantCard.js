@@ -2,8 +2,19 @@ import { Card } from "@mui/material";
 import React from "react";
 import styles from "./RestaurantCard.module.css";
 import DoneIcon from "@mui/icons-material/Done";
+import Rating from "@mui/material/Rating";
 
-function RestaurantCard() {
+function RestaurantCard({
+  picture,
+  name,
+  rating,
+  numberOfRatings,
+  cuisine,
+  price,
+  location,
+  operatingHours,
+  options,
+}) {
   return (
     <Card className={styles.container}>
       <div className={styles.pic}>
@@ -13,16 +24,26 @@ function RestaurantCard() {
         />
       </div>
       <div className={styles.info}>
-        <h2>Pai Northern</h2>
-        <div className={styles.rating}>333</div>
-        <div>
-          <span className={styles.tags}>Thai</span>
-          <span> · $$ · Downtown</span>
+        <h2 className={styles.restName}>{name}</h2>
+        <div className={styles.rating}>
+          <Rating name="read-only" value={rating} readOnly size="small" />
+          <div className={styles.ratingNumber}>{numberOfRatings}</div>
         </div>
-        <div className={styles.time}>Closed until 4:00 PM</div>
+        <div>
+          <span className={styles.tags}>{cuisine}</span>
+          <span>
+            {" "}
+            · {price} · {location}
+          </span>
+        </div>
+        <div className={styles.time}>{operatingHours}</div>
         <div className={styles.options}>
-          <DoneIcon color="success" sx={{ fontSize: 20, mr: 0.5 }} />
-          Outdoor
+          {options.map((o) => (
+            <div key={o} className={styles.option}>
+              <DoneIcon color="success" sx={{ fontSize: 20, mr: 0.5 }} />
+              {o}
+            </div>
+          ))}
         </div>
       </div>
     </Card>
