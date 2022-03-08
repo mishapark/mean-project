@@ -7,14 +7,12 @@ import { CardContent } from "@mui/material";
 import { CardMedia } from "@mui/material";
 import { CssBaseline } from "@mui/material";
 import { Grid } from "@mui/material";
-import { Toolbar } from "@mui/material";
 import { Button } from "@mui/material";
 import { Container } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { useNavigate } from "react-router-dom";
 
-import Navigation from "../components/Navigation/Navigation";
-import Footer from "../components/Footer/Footer";
-import { spacing, typography } from "@mui/system";
+import { spacing } from "@mui/system";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -44,10 +42,13 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 export const Home = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
 
   return (
     <div>
       <CssBaseline />
+      <div></div>
+
       <main>
         <div className={classes.container}>
           <Container maxWidth="sm">
@@ -73,12 +74,24 @@ export const Home = () => {
             <div>
               <Grid container spacing={2} justifyContent="center">
                 <Grid item>
-                  <Button variant="contained" color="primary">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {
+                      navigate("/restaurants");
+                    }}
+                  >
                     View All Hotels
                   </Button>
                 </Grid>
                 <Grid item>
-                  <Button variant="outlined" color="primary">
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    onClick={() => {
+                      navigate("/events");
+                    }}
+                  >
                     View All Events
                   </Button>
                 </Grid>

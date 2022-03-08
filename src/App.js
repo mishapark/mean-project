@@ -5,6 +5,7 @@ import { Singup } from "./pages/Singup";
 import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";
 import Events from "./pages/Events/Events";
+import Blog from "./pages/Blog";
 import Restaurants from "./pages/Restaurants";
 import Restaurant from "./pages/Restaurant";
 import Navigation from "./components/Navigation/Navigation";
@@ -48,6 +49,7 @@ function App() {
             <Route path=":id" element={<Restaurant />} />
           </Route>
           <Route path="/events" element={<Events />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/signup" element={<Singup />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/career" element={<Career />} />
