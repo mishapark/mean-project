@@ -81,7 +81,7 @@ export const Home = () => {
                       navigate("/restaurants");
                     }}
                   >
-                    View All Hotels
+                    View All Restaurants
                   </Button>
                 </Grid>
                 <Grid item>
