@@ -50,10 +50,7 @@ function App() {
           </Route>
           <Route path="/events" element={<Events />} />
           <Route path="/event" element={<Event />} />
-<<<<<<< HEAD
-=======
           <Route path="/blog" element={<Blog />} />
->>>>>>> ffb6fa34db0ae5c955bc7ad945e1e1750ba2e9ac
           <Route path="/signup" element={<Singup />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/career" element={<Career />} />
