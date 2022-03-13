@@ -5,6 +5,7 @@ import { Singup } from "./pages/Singup";
 import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";
 import Events from "./pages/Events/Events";
+import Blog from "./pages/Blog";
 import Restaurants from "./pages/Restaurants";
 import Restaurant from "./pages/Restaurant";
 import Navigation from "./components/Navigation/Navigation";
@@ -49,6 +50,10 @@ function App() {
           </Route>
           <Route path="/events" element={<Events />} />
           <Route path="/event" element={<Event />} />
+<<<<<<< HEAD
+=======
+          <Route path="/blog" element={<Blog />} />
+>>>>>>> ffb6fa34db0ae5c955bc7ad945e1e1750ba2e9ac
           <Route path="/signup" element={<Singup />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/career" element={<Career />} />
