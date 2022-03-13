@@ -1,4 +1,5 @@
 function tabs(tabsSelector, tabsContentSelector, tabsParentSelector, activeClass) {
+    console.log("in here to show/hide")
 	let tabs = document.querySelectorAll(tabsSelector),
 		tabsContent = document.querySelectorAll(tabsContentSelector),
 		tabsParent = document.querySelector(tabsParentSelector);

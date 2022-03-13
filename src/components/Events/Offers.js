@@ -1,9 +1,9 @@
 import '..//..//pages/Events/Events.css';
 import slider from './Slider';
+import { useEffect } from 'react';
 
 const Offers = () => {
-    window.addEventListener('DOMContentLoaded', function() {
-
+    useEffect(() => {
         slider({
             container: '.offer__slider',
             slide: '.offer__slide',
@@ -14,9 +14,8 @@ const Offers = () => {
             wrapper: '.offer__slider-wrapper',
             field: '.offer__slider-inner'
         });
-
-        
-        });
+    }, [])
+    
     return (
 
         <div className="offer">

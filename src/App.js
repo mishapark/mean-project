@@ -48,6 +48,7 @@ function App() {
             <Route path=":id" element={<Restaurant />} />
           </Route>
           <Route path="/events" element={<Events />} />
+          <Route path="/event" element={<Event />} />
           <Route path="/signup" element={<Singup />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/career" element={<Career />} />
