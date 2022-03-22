@@ -33,13 +33,9 @@ const Offers = () => {
                 </div>
                 <div className="container">
                     <div className="offer__advantages">
-                        <h2>Fast and useful</h2>
+                        <h1>Featured Events</h1>
                         <div className="offer__advantages-text">
-                            Cooking at home takes a lot of effort, time and nerves. We bring food for the whole day at once, and you can act as you like, without adjusting to anyone and being confident in the quality of the product!
-                        </div>
-                        <h2>The right diet</h2>
-                        <div className="offer__advantages-text">
-                            We have developed a special menu that takes into account all the nuances of proper nutrition, from the balance of BZHU to their preparation and crushing of the diet.
+                            Enjoy with featured events
                         </div>
                     </div>
                     <div className="offer__slider">

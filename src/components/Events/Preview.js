@@ -4,47 +4,25 @@ import * as React from "react";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/material";
 
-const events = {
-    metadata: [{
-        id: 1,
-        name: 'Event 1',
-        data: "img/tabs/vegy.jpg",
-    },
-    {
-        id: 2,
-        name: 'Event 2',
-        data: "img/tabs/elite.jpg",
-    },
-    {
-        id: 3,
-        name: 'Event 3',
-        data: "img/tabs/vegy.jpg",
-    },
-    {
-        id: 4,
-        name: 'Event 4',
-        data: "img/tabs/vegy.jpg",
-    }]
-
-};
-
-const Preview = () => {
-
+const Preview = (events) => {
+    console.log('in Proeview >>>>>>' , events)
     return (
         <Container component="main" maxWidth="lg" className="preview">
             <div className="bgc_blue"></div>
             <Container component="main" maxWidth="lg" className="container">
                 <Grid className="tabcontainer" >
-                    {events.metadata.map((t) => (
+                    {events.events.map((t) => (
                         <div className="tabcontent">
                             <img
-                                src={t.data}
+                                src={t.image_url}
                                 alt="vegy"
                             />
                             
                             <div className="tabcontent__descr">
-                                <Link href="/event" variant="body2">
-                                    {t.name}
+                                <Link href="/event" variant="body2" state={{name: t.name}}
+                                // city = {t.city} country = {t.country} description = {t.description} img = {t.image_url} url = {t.event_site_url} address = {t.address} 
+                                >
+                                    {t.description}
                                 </Link>
                             </div>
                         </div>
@@ -52,7 +30,7 @@ const Preview = () => {
                     <div className="tabheader">
                         <h3>Choose your Event</h3>
                         <div className="tabheader__items">
-                            {events.metadata.map((t) => (
+                            {events.events.map((t) => (
                                 <div className="tabheader__item">{t.name}</div>
                             ))}
                         </div>

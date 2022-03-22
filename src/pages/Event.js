@@ -7,6 +7,7 @@ import { FormControl, InputLabel, Container, Grid, CssBaseline, CardMedia, CardC
 import TextareaAutosize from '@mui/base/TextareaAutosize';
 import EventMap from "../components/Events/EventMap";
 import Map from "../components/Map/Map";
+import { useParams, useLocation } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -42,15 +43,18 @@ const useStyles = makeStyles((theme) => ({
 
   }));
 
-export const Event = () => {
+export const Event = (props) => {
     const classes = useStyles();
-  
+    const location = useLocation()
+    const { name } = location.state
+
     return (
       <div>
         <Container component="main" maxWidth="lg">
             <CssBaseline />
             <Typography variant="h5" align="center" className={classes.cardGridWithTopBottom}> 
-            Harbourfront Centre presents Via Katlehong Dance in Via Kanana
+            {/* Harbourfront Centre presents Via Katlehong Dance in Via Kanana */}
+            {name}
             </Typography>
             <Grid container spacing={3}>
                 <Grid item >
@@ -88,7 +92,7 @@ export const Event = () => {
             <Typography gutterBottom fontSize={16} width={600} color="red" className={classes.cardGrid}>
                 <b>What/Why:</b>
                 </Typography>
-            <Typography gutterBottom fontSize={12} width={600} font-family = "Arial, Helvetica, sans-serif">
+            <Typography gutterBottom fontSize={12} width={600} fontFamily = "Arial, Helvetica, sans-serif">
                 In partnership with Digidance, Harbourfront Centre announces the North 
                 American premiere of the digital broadcast of South African dance company Via 
                 Katlehong Dance and contemporary choreographer Gregory Maqoma'sVia Kanana, 

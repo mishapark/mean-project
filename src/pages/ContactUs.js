@@ -6,6 +6,9 @@ import { Container, Grid, CssBaseline, CardMedia, CardContent, Card, Typography,
 import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import { DonutLarge } from "@mui/icons-material";
+import axios from "axios";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -52,9 +55,48 @@ const useStyles = makeStyles((theme) => ({
 
   }));
 
+  
+
 export const ContactUs = () => {
     const classes = useStyles();
-  
+    const navigate = useNavigate();
+  const [formData, setFromDate] = useState({
+    cname: "",
+    phone: "",
+  });
+  const { cname, phone } = formData;
+
+  const onChange = (e) => {
+    setFromDate({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    let token = localStorage.getItem("token");
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        "x-auth-token": token,
+      },
+    };
+    let data = {
+      cname: cname,
+      phone: phone,
+    };
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/contacts",
+        data,
+        config
+      );
+
+      console.log(response);
+      navigate("/");
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
     return (
       <div>
         <Container maxWidth="lg" className={classes.cardGrid}>
@@ -82,11 +124,18 @@ export const ContactUs = () => {
                 </Typography>
                 
           <CardContent className={classes.cardForm}>
-              <FormControl action="#">
-                  <Input required placeholder="Your name" name="name" type="text" />
-                  <Input required placeholder="Your phone number" name="phone" type="phone"/>
-                  <Button variant="outlined" className="btn btn_dark btn_min">Call me back</Button>
-              </FormControl>
+              <form onSubmit={(e) => onSubmit(e)}>
+                  <div>
+                  <Input required placeholder="Your name" name="cname" type="text" value={cname}
+                         onChange={(e) => onChange(e)}/>
+                  </div>
+                  <div>
+                  <Input required placeholder="Your phone number" name="phone" type="phone" value={phone}
+                         onChange={(e) => onChange(e)}/>
+                  </div>
+                  
+                  <Input type="submit" value="Call me back"/>
+              </form>
           </CardContent>
         </Container>
 
