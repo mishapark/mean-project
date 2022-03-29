@@ -11,8 +11,50 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import decode from "jwt-decode";
 
 export const Login = () => {
+  const navigate = useNavigate();
+  const [formData, setFromDate] = useState({
+    email: "",
+    password: "",
+  });
+  const { email, password } = formData;
+
+  const onChange = (e) => {
+    setFromDate({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    let data = {
+      email: email,
+      password: password,
+    };
+    try {
+      const response = await axios.post(
+        "http://localhost:5006/api/auth",
+        data,
+        config
+      );
+
+      console.log(response);
+      localStorage.setItem("token", response.data.token);
+      console.log(decode(response.data.token));
+      navigate("/home");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -30,7 +72,12 @@ export const Login = () => {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <Box component="form" noValidate sx={{ mt: 1 }}>
+        <Box
+          component="form"
+          onSubmit={(e) => onSubmit(e)}
+          noValidate
+          sx={{ mt: 1 }}
+        >
           <TextField
             margin="normal"
             required
@@ -40,6 +87,8 @@ export const Login = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            value={email}
+            onChange={(e) => onChange(e)}
           />
           <TextField
             margin="normal"
@@ -50,6 +99,8 @@ export const Login = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={password}
+            onChange={(e) => onChange(e)}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
