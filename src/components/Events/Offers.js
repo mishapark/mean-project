@@ -27,9 +27,7 @@ const Offers = () => {
                         Our main idea is proper nutrition. It can be simple and delicious. We are not just a delivery, we are a service! We took care of all the calculations of BZHU, calories, portion sizes and other important but boring aspects. You can only have healthy, satisfying and proper food, which we bring right under the door.
                         </div>
                     </div>
-                    <div className="offer__action">
-                        <button className="btn btn_dark" data-modal>Contact us</button>
-                    </div>
+                    
                 </div>
                 <div className="container">
                     <div className="offer__advantages">

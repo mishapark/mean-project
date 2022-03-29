@@ -19,8 +19,9 @@ const Preview = (events) => {
                             />
                             
                             <div className="tabcontent__descr">
-                                <Link href="/event" variant="body2" state={{name: t.name}}
-                                // city = {t.city} country = {t.country} description = {t.description} img = {t.image_url} url = {t.event_site_url} address = {t.address} 
+                                <Link href={"/event?name=" + t.name + "&city=" + t.city + "&country=" + t.country + "&description=" + t.description + "&img=" + t.image_url + "&url=" + t.event_site_url +
+                                 "&address=" + t.address}
+                                
                                 >
                                     {t.description}
                                 </Link>
