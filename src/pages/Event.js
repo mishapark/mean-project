@@ -9,6 +9,12 @@ import EventMap from "../components/Events/EventMap";
 import Map from "../components/Map/Map";
 import { useParams, useLocation } from "react-router-dom";
 
+function useQuery() {
+    const { search } = useLocation();
+  
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+}
+
 const useStyles = makeStyles((theme) => ({
     container: {
       padding: spacing(8, 6, 0, 8),
@@ -45,9 +51,16 @@ const useStyles = makeStyles((theme) => ({
 
 export const Event = (props) => {
     const classes = useStyles();
-    const location = useLocation()
-    const { name } = location.state
-
+   // const params = useParams()
+    
+    let query = useQuery();
+    const name = query.get("name")
+    const city = query.get("city")
+    const country = query.get("country")
+    const description = query.get("description")
+    const img = query.get("img")
+    const url = query.get("url")
+    const address = query.get("address")
     return (
       <div>
         <Container component="main" maxWidth="lg">
@@ -61,7 +74,7 @@ export const Event = (props) => {
                     <Card className={classes.card}>
                         <CardMedia
                             className={classes.cardMedia}
-                            image="https://source.unsplash.com/random"
+                            image={img}
                             title="Image Title"
                         />
                         
@@ -72,13 +85,12 @@ export const Event = (props) => {
                     <Card className={classes.card}>
                         <CardContent className={classes.cardMedia}>
                             <Typography gutterBottom >
-                                Harbourfront Centre
+                            {name}
                             </Typography>
                             <Typography gutterBottom fontSize={11}>
-                                235 Queens Quay W <br />
-                                Toronto, ON M5J 2G8 <br />
-                                Canada <br />
-                                Phone number(416) 973-4000 <br />
+                                {address}<br />
+                                {city} <br />
+                                {country} <br />
                             </Typography>
                         </CardContent>
                         
@@ -93,16 +105,8 @@ export const Event = (props) => {
                 <b>What/Why:</b>
                 </Typography>
             <Typography gutterBottom fontSize={12} width={600} fontFamily = "Arial, Helvetica, sans-serif">
-                In partnership with Digidance, Harbourfront Centre announces the North 
-                American premiere of the digital broadcast of South African dance company Via 
-                Katlehong Dance and contemporary choreographer Gregory Maqoma'sVia Kanana, 
-                streaming February 16 - March 6, 2022. Pulsing with rhythmic vibrancy, 
-                eight dancers combine the traditional, high-energy dance of Pantsula 
-                (born out of South African protest) with tap, step and gumboot - a miners' 
-                dance based on handstrokes on the thighs and calves - into an exhilarating 
-                exploration of the problems and promise of their homeland. The digital broadcast 
-                ofVia Kananawill include a 20-minute pre-show documentary. For tickets and 
-                information, visit:harbourfrontcentre.com
+                {description} 
+                information, visit:{url}
             </Typography>
                            
             <Typography gutterBottom fontSize={16} color="red" className={classes.cardGrid}>

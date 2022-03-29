@@ -62,9 +62,10 @@ export const ContactUs = () => {
     const navigate = useNavigate();
   const [formData, setFromDate] = useState({
     cname: "",
+    email: "",
     phone: "",
   });
-  const { cname, phone } = formData;
+  const { cname, phone, email } = formData;
 
   const onChange = (e) => {
     setFromDate({ ...formData, [e.target.name]: e.target.value });
@@ -81,7 +82,8 @@ export const ContactUs = () => {
       },
     };
     let data = {
-      cname: cname,
+      name: cname,
+      email: email,
       phone: phone,
     };
     try {
@@ -92,7 +94,7 @@ export const ContactUs = () => {
       );
 
       console.log(response);
-      navigate("/");
+      navigate("/events");
     } catch (err) {
       console.log(err.message);
     }
@@ -127,6 +129,10 @@ export const ContactUs = () => {
               <form onSubmit={(e) => onSubmit(e)}>
                   <div>
                   <Input required placeholder="Your name" name="cname" type="text" value={cname}
+                         onChange={(e) => onChange(e)}/>
+                  </div>
+                  <div>
+                  <Input required placeholder="Your email" name="email" type="email" value={email}
                          onChange={(e) => onChange(e)}/>
                   </div>
                   <div>
