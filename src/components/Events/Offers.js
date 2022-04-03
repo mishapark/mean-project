@@ -2,7 +2,7 @@ import '..//..//pages/Events/Events.css';
 import slider from './Slider';
 import { useEffect } from 'react';
 
-const Offers = () => {
+const Offers = (props) => {
     useEffect(() => {
         slider({
             container: '.offer__slider',
@@ -50,7 +50,15 @@ const Offers = () => {
                         </div>
                         <div className="offer__slider-wrapper">
                             <div className="offer__slider-inner">
-                                <div className="offer__slide">
+                                {props.featuredEvents.map((item) => {
+                                    return (
+                                    <div className="offer__slide">
+                                        <img src={item.image_url} alt=""/>
+                                    </div>
+                                    )
+                                })}
+
+                                {/* <div className="offer__slide">
                                     <img src="img/slider/pepper.jpg" alt="pepper"/>
                                 </div>
                                 <div className="offer__slide">
@@ -61,7 +69,8 @@ const Offers = () => {
                                 </div>
                                 <div className="offer__slide">
                                     <img src="img/slider/paprika.jpg" alt="paprika"/>
-                                </div>
+                                </div> */}
+                               
                             </div>
                         </div>
                     </div>
