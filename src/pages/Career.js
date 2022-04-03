@@ -1,49 +1,68 @@
-import { Button, Container, Divider, Grid, Typography } from '@mui/material'
-import React from 'react'
-import { CareerForm } from '../components/CareersList/CareerForm'
+import { Button, Container, Divider, Grid, Typography } from "@mui/material";
+import React from "react";
+import { useParams } from "react-router-dom";
+import { CareerForm } from "../components/CareersList/CareerForm";
+import axios from "axios";
 
 export const Career = () => {
+  const { id } = useParams();
+
+  const [job, setJob] = React.useState({});
+
+  const sendGetRequest = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5006/api/jobs/${id}`);
+      console.log(response.data);
+      setJob(response.data);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  React.useEffect(() => {
+    sendGetRequest();
+  }, []);
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <Container maxWidth="lg" sx={{mt:6}}>
-        <Grid container spacing={2}>
-            <Grid item xs={10}>
-            <Typography variant='h3'>
-            UX /UI Designer
-            </Typography>
-            <Typography variant="subtitle2">
-            Moscow, Russia · Full time
-            </Typography>
-            </Grid>
-            <Grid item xs={2}>
-                <Button variant="contained">Apply</Button>
-            </Grid>
-            <Grid item xs={12}>
-                <Divider></Divider>
-            </Grid>
-            <Grid item xs={12}>
-                <Typography variant="h5">
-                What we’re looking for
-                </Typography>
-                <Typography variant="subtitle1">
-                lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus feugiat elit vitae enim lacinia semper. Cras nulla lectus, porttitor vitae urna iaculis, malesuada tincidunt lectus. Proin nec tellus sit amet massa auctor imperdiet id vitae diam. Aenean gravida est nec diam suscipit iaculis. Praesent urna velit, auctor nec turpis et, vehicula lobortis sem. Vivamus convallis mi sagittis eleifend laoreet. Praesent vitae venenatis enim. Nulla tincidunt felis et lectus rhoncus laoreet.
-                </Typography>
-            </Grid>
-            <Grid item xs={12}>
-                <Typography variant="h5">
-                Why to apply
-                </Typography>
-                <Typography variant="subtitle1">
-                We believe lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus feugiat elit vitae enim lacinia semper. Cras nulla lectus, porttitor vitae urna iaculis, malesuada tincidunt lectus. Proin nec tellus sit amet massa auctor imperdiet id vitae diam. Aenean gravida est nec diam suscipit iaculis. Praesent urna velit, auctor nec turpis et, vehicula lobortis sem. Vivamus convallis mi sagittis eleifend laoreet. Praesent vitae venenatis enim. Nulla tincidunt felis et lectus rhoncus laoreet.
-                </Typography>
-            </Grid>
-            <Grid item xs={12}>
-                <Divider></Divider>
-            </Grid>
-            <Grid item xs={12}>
-                <CareerForm></CareerForm>
-            </Grid>
+    <Container maxWidth="lg" sx={{ mt: 6 }}>
+      <Grid container spacing={2}>
+        <Grid item xs={10}>
+          <Typography variant="h3">{job.name}</Typography>
+          <Typography variant="subtitle2">
+            {job.location} · {job.type}
+          </Typography>
         </Grid>
-        <br></br>
+        <Grid item xs={2} spacing={2}>
+          <Button variant="contained" onClick={handleClickOpen}>
+            Apply
+          </Button>
+          <Button variant="contained">Update</Button>
+        </Grid>
+        <Grid item xs={12}>
+          <Divider></Divider>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h5">What we’re looking for</Typography>
+          <Typography variant="subtitle1">{job.description}</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Divider></Divider>
+        </Grid>
+        <Grid item xs={12}>
+          <CareerForm open={open} setOpen={setOpen}></CareerForm>
+        </Grid>
+      </Grid>
+      <br></br>
     </Container>
-  )
-}
+  );
+};

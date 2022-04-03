@@ -52,8 +52,10 @@ function App() {
           <Route path="/event" element={<Event />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/signup" element={<Singup />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/career" element={<Career />} />
+          <Route path="/careers">
+            <Route index element={<Careers />} />
+            <Route path=":id" element={<Career />} />
+          </Route>
           <Route path="/contact" element={<ContactUs />} />
         </Routes>
         <NotificationCenter
