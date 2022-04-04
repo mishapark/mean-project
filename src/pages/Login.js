@@ -49,7 +49,7 @@ export const Login = () => {
 
       console.log(response);
       localStorage.setItem("token", response.data.token);
-      console.log(decode(response.data.token));
+      localStorage.setItem("role", decode(response.data.token).user.role);
       navigate("/");
     } catch (err) {
       console.log(err);
