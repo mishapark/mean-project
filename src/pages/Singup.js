@@ -93,7 +93,6 @@ export const Singup = () => {
             fullWidth
             id="email"
             label="Email Address"
-            autoComplete="off"
             name="email"
             value={email}
             onChange={(e) => onChange(e)}
@@ -108,7 +107,7 @@ export const Singup = () => {
             type="password"
             id="password"
             minLength="4"
-            autoComplete="off"
+            autoComplete="new-password"
             value={password}
             onChange={(e) => onChange(e)}
           />

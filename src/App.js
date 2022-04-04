@@ -16,6 +16,7 @@ import { Career } from "./pages/Career";
 import NotificationCenter from "./components/NotificationCenter/NotificationCenter";
 import Event from "./pages/Event";
 import ContactUs from "./pages/ContactUs";
+import AuthContext from "./context/AuthContext";
 
 const theme = createTheme({
   palette: {
@@ -34,37 +35,79 @@ const theme = createTheme({
 
 function App() {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState("false");
+
+  const login = () => {
+    setIsLoggedIn(true);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+  };
+
+  let appRoutes;
+  if (isLoggedIn) {
+    appRoutes = (
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/restaurants">
+          <Route index element={<Restaurants />} />
+          <Route path=":id" element={<Restaurant />} />
+        </Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/event" element={<Event />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/careers">
+          <Route index element={<Careers />} />
+          <Route path=":id" element={<Career />} />
+        </Route>
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/signup" element={<Singup />} />
+      </Routes>
+    );
+  } else {
+    appRoutes = (
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* <Route path='/' element={<Login/>} /> */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/restaurants">
+          <Route index element={<Restaurants />} />
+          <Route path=":id" element={<Restaurant />} />
+        </Route>
+        <Route path="/events" element={<Events />} />
+        <Route path="/event" element={<Event />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/signup" element={<Singup />} />
+        <Route path="/careers">
+          <Route index element={<Careers />} />
+          <Route path=":id" element={<Career />} />
+        </Route>
+        <Route path="/contact" element={<ContactUs />} />
+      </Routes>
+    );
+  }
+
   const handleNotificationToggle = () =>
     setNotificationsOpen(!notificationsOpen);
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Navigation toogleNotifications={handleNotificationToggle} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          {/* <Route path='/' element={<Login/>} /> */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/restaurants">
-            <Route index element={<Restaurants />} />
-            <Route path=":id" element={<Restaurant />} />
-          </Route>
-          <Route path="/events" element={<Events />} />
-          <Route path="/event" element={<Event />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/signup" element={<Singup />} />
-          <Route path="/careers">
-            <Route index element={<Careers />} />
-            <Route path=":id" element={<Career />} />
-          </Route>
-          <Route path="/contact" element={<ContactUs />} />
-        </Routes>
-        <NotificationCenter
-          notificationsOpen={notificationsOpen}
-          toogleNotifications={handleNotificationToggle}
-        />
-        <Footer />
-      </BrowserRouter>
-    </ThemeProvider>
+    <AuthContext.Provider
+      value={{ isLoggedIn: isLoggedIn, login: login, logout: logout }}
+    >
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Navigation toogleNotifications={handleNotificationToggle} />
+          {appRoutes}
+          <NotificationCenter
+            notificationsOpen={notificationsOpen}
+            toogleNotifications={handleNotificationToggle}
+          />
+          <Footer />
+        </BrowserRouter>
+      </ThemeProvider>
+    </AuthContext.Provider>
   );
 }
 

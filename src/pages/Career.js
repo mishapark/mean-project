@@ -3,6 +3,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { CareerForm } from "../components/CareersList/CareerForm";
 import axios from "axios";
+import { UpdateForm } from "../components/CareersList/UpdateForm";
 
 export const Career = () => {
   const { id } = useParams();
@@ -23,10 +24,18 @@ export const Career = () => {
     sendGetRequest();
   }, []);
 
+  const [user, setUser] = React.useState({
+    role: localStorage.getItem("role"),
+  });
   const [open, setOpen] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
+  };
+
+  const handleClickOpen2 = () => {
+    setOpen2(true);
   };
 
   const handleClose = () => {
@@ -46,7 +55,13 @@ export const Career = () => {
           <Button variant="contained" onClick={handleClickOpen}>
             Apply
           </Button>
-          <Button variant="contained">Update</Button>
+          {user.role === "Admin" ? (
+            <Button variant="contained" onClick={handleClickOpen2}>
+              Update
+            </Button>
+          ) : (
+            <></>
+          )}
         </Grid>
         <Grid item xs={12}>
           <Divider></Divider>
@@ -59,7 +74,15 @@ export const Career = () => {
           <Divider></Divider>
         </Grid>
         <Grid item xs={12}>
-          <CareerForm open={open} setOpen={setOpen}></CareerForm>
+          <CareerForm open={open} setOpen={setOpen} jobId={id}></CareerForm>
+        </Grid>
+        <Grid item xs={12}>
+          <UpdateForm
+            open={open2}
+            setOpen={setOpen2}
+            job={job}
+            setJob={setJob}
+          ></UpdateForm>
         </Grid>
       </Grid>
       <br></br>

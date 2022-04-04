@@ -11,12 +11,14 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import decode from "jwt-decode";
+import AuthContext from "../context/AuthContext";
 
 export const Login = () => {
+  const auth = useContext(AuthContext);
   const navigate = useNavigate();
   const [formData, setFromDate] = useState({
     email: "",
@@ -50,6 +52,7 @@ export const Login = () => {
       console.log(response);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", decode(response.data.token).user.role);
+      auth.login();
       navigate("/");
     } catch (err) {
       console.log(err);

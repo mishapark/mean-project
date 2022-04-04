@@ -23,43 +23,77 @@ export const CareersList = ({ rows }) => {
       },
     });
   };
+
+  const [user, setUser] = React.useState({
+    role: localStorage.getItem("role"),
+  });
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
-          <TableRow>
-            <TableCell>Job</TableCell>
-            <TableCell>Role</TableCell>
-            <TableCell>Location</TableCell>
-            <TableCell>Apply</TableCell>
-            <TableCell>Delete</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row._id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                <Link to={`/careers/${row._id}`}>{row.name}</Link>
-              </TableCell>
-              <TableCell>{row.role}</TableCell>
-              <TableCell>{row.location}</TableCell>
-              <TableCell>
-                <Button variant="contained">Apply</Button>
-              </TableCell>
-              <TableCell>
-                <Button
-                  variant="contained"
-                  onClick={() => handleDelete(row._id)}
-                >
-                  Delete
-                </Button>
-              </TableCell>
+          {user.role === "Admin" ? (
+            <TableRow>
+              <TableCell>Job</TableCell>
+              <TableCell>Role</TableCell>
+              <TableCell>Location</TableCell>
+              <TableCell>Apply</TableCell>
+              <TableCell>Delete</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
+          ) : (
+            <TableRow>
+              <TableCell>Job</TableCell>
+              <TableCell>Role</TableCell>
+              <TableCell>Location</TableCell>
+              <TableCell>Apply</TableCell>
+            </TableRow>
+          )}
+        </TableHead>
+        {user.role === "Admin" ? (
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow
+                key={row._id}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  <Link to={`/careers/${row._id}`}>{row.name}</Link>
+                </TableCell>
+                <TableCell>{row.role}</TableCell>
+                <TableCell>{row.location}</TableCell>
+                <TableCell>
+                  <Button variant="contained">Apply</Button>
+                </TableCell>
+                <TableCell>
+                  <Button
+                    variant="contained"
+                    onClick={() => handleDelete(row._id)}
+                  >
+                    Delete
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        ) : (
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow
+                key={row._id}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  <Link to={`/careers/${row._id}`}>{row.name}</Link>
+                </TableCell>
+                <TableCell>{row.role}</TableCell>
+                <TableCell>{row.location}</TableCell>
+                <TableCell>
+                  <Button variant="contained">Apply</Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        )}
       </Table>
     </TableContainer>
   );

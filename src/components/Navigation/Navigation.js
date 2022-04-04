@@ -14,6 +14,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Logo from "../../assets/icons/logo.png";
 import { Link } from "react-router-dom";
 import styles from "./styles";
+import AuthContext from "../../context/AuthContext";
+import { useContext } from "react";
 
 const pages = [
   { name: "Home", link: "/" },
@@ -23,6 +25,7 @@ const pages = [
   { name: "Careers", link: "/careers" },
   { name: "Contact Us", link: "/contact" },
 ];
+
 const settings = ["signup", "login"];
 
 const Navigation = ({ toogleNotifications }) => {
@@ -47,8 +50,11 @@ const Navigation = ({ toogleNotifications }) => {
     toogleNotifications();
   };
 
+  const auth = useContext(AuthContext);
+
   return (
     <AppBar position="sticky">
+      {console.log(auth)}
       <Container disableGutters>
         <Toolbar disableGutters sx={styles.toolbar}>
           <Box component={"div"} sx={styles.logo}>
@@ -121,17 +127,17 @@ const Navigation = ({ toogleNotifications }) => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem
-                  key={setting}
-                  onClick={handleCloseUserMenu}
-                  sx={styles.menuItem}
-                >
-                  <Link to={`/${setting}`}>
-                    {setting.charAt(0).toUpperCase() + setting.slice(1)}
-                  </Link>
-                </MenuItem>
-              ))}
+              {auth.isLoggedIn ? (
+                <li>
+                  <Button onClick={auth.logout}>Logout</Button>
+                </li>
+              ) : (
+                <li>
+                  <Button>
+                    <Link to="login">Login</Link>
+                  </Button>
+                </li>
+              )}
             </Menu>
           </Box>
         </Toolbar>
