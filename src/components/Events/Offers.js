@@ -1,8 +1,16 @@
 import '..//..//pages/Events/Events.css';
+import { useState } from 'react';
 import slider from './Slider';
 import { useEffect } from 'react';
+import Link from "@mui/material/Link";
 
-const Offers = () => {
+const Offers = (props) => {
+    const  { featuredEvents } = props;
+    console.log("featuredEvents", featuredEvents)
+    const [featuredEventIndex, setFeaturedEventIndex] = useState(0);
+    const [featuredEvent, setFeaturedEvent] = useState(featuredEvents[0]);
+   
+
     useEffect(() => {
         slider({
             container: '.offer__slider',
@@ -15,6 +23,27 @@ const Offers = () => {
             field: '.offer__slider-inner'
         });
     }, [])
+
+    useEffect(() => {
+        setFeaturedEvent(featuredEvents[featuredEventIndex])
+    }, [featuredEventIndex])
+
+    const handlePrevClick = () => {
+        if (featuredEventIndex === 0) {
+            setFeaturedEventIndex(3)
+            
+        } else {
+            setFeaturedEventIndex(featuredEventIndex - 1);
+        }
+    }
+
+    const handleNextClick = () => {
+        if (featuredEventIndex === 3) {
+            setFeaturedEventIndex(0)
+        } else {
+            setFeaturedEventIndex(featuredEventIndex + 1);
+        }
+    }
     
     return (
 
@@ -33,35 +62,50 @@ const Offers = () => {
                     <div className="offer__advantages">
                         <h1>Featured Events</h1>
                         <div className="offer__advantages-text">
-                            Enjoy with featured events
+                            <div style={{
+                                            color: 'black', 
+                                            fontSize: '20px',
+                                            fontWeight: 'bold',
+                                          }}>
+                                <Link href={"/event?name=" + featuredEvent.name + "&city=" + featuredEvent.city + "&country=" + featuredEvent.country + "&description=" + featuredEvent.description 
+                                            + "&img=" + featuredEvent.image_url + "&url=" + featuredEvent.event_site_url + "&address=" + featuredEvent.address}
+                                           >{featuredEvent.name}</Link>
+                            </div>
                         </div>
                     </div>
                     <div className="offer__slider">
                         <div className="offer__slider-counter">
-                            <div className="offer__slider-prev">
+                            <div className="offer__slider-prev" onClick={handlePrevClick}>
                                 <img src="icons/left.svg" alt="prev"/>
                             </div>
                             <span id="current">03</span>
                             /
                             <span id="total">04</span>
-                            <div className="offer__slider-next">
+                            <div className="offer__slider-next" onClick={handleNextClick}>
                                 <img src="icons/right.svg" alt="next"/>
                             </div>
                         </div>
                         <div className="offer__slider-wrapper">
                             <div className="offer__slider-inner">
-                                <div className="offer__slide">
-                                    <img src="img/slider/pepper.jpg" alt="pepper"/>
-                                </div>
-                                <div className="offer__slide">
-                                    <img src="img/slider/food-12.jpg" alt="food"/>
-                                </div>
-                                <div className="offer__slide">
-                                    <img src="img/slider/olive-oil.jpg" alt="oil"/>
-                                </div>
-                                <div className="offer__slide">
-                                    <img src="img/slider/paprika.jpg" alt="paprika"/>
-                                </div>
+                                {featuredEvents.map((t) => {
+                                    return (
+                                    <div className="offer__slide">
+                                        <img src={t.image_url} alt=""/>
+                                        {/* <div style={{
+                                            position: 'absolute', 
+                                            color: 'black', 
+                                            top: '85%', 
+                                            left: '50%', 
+                                            transform: 'translateX(-50%)',
+                                            fontSize: '20px',
+                                            fontWeight: 'bold',
+                                          }} ><Link href={"/event?name=" + t.name + "&city=" + t.city + "&country=" + t.country + "&description=" + t.description + "&img=" + t.image_url + "&url=" + t.event_site_url +
+                                                          "&address=" + t.address}
+                                           >{t.name}</Link>
+                                        </div> */}
+                                    </div>
+                                    )
+                                })}
                             </div>
                         </div>
                     </div>
