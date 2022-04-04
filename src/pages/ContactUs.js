@@ -2,13 +2,11 @@ import * as React from "react";
 import './Events/Events.css';
 import { makeStyles } from "@mui/styles";
 import { spacing} from "@mui/system";
-import { Container, Grid, CssBaseline, CardMedia, CardContent, Card, Typography, Button} from '@mui/material';
-import FormControl from '@mui/material/FormControl';
+import { Container, CardMedia, CardContent, Typography} from '@mui/material';
 import Input from '@mui/material/Input';
-import { DonutLarge } from "@mui/icons-material";
 import axios from "axios";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -94,7 +92,7 @@ export const ContactUs = () => {
       );
 
       console.log(response);
-      navigate("/events");
+      navigate("/");
     } catch (err) {
       console.log(err.message);
     }
