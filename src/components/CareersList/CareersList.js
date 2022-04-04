@@ -16,7 +16,7 @@ export const CareersList = ({ rows }) => {
     setId({
       id: newId,
     });
-    axios.delete("http://localhost:5006/api/jobs/", id, {
+    axios.delete("http://localhost:5000/api/jobs/", id, {
       headers: {
         "Content-Type": "application/json",
         "x-auth-token": localStorage.getItem("token"),

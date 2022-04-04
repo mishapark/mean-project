@@ -8,6 +8,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Autocomplete, Stack, TextField } from "@mui/material";
 import axios from "axios";
+import SaveIcon from "@mui/icons-material/Save";
 
 export const CareerForm = ({ open, setOpen }) => {
   const handleClose = () => {
@@ -31,17 +32,16 @@ export const CareerForm = ({ open, setOpen }) => {
                 <TextField label="Email" variant="outlined" fullWidth />
               </Grid>
               <Grid item xs={6}>
-                <Button variant="contained" component="label">
+                <Button
+                  variant="contained"
+                  component="label"
+                  startIcon={<SaveIcon />}
+                >
                   Upload Resume
                   <input type="file" hidden />
                 </Button>
               </Grid>
-              <Grid item xs={6}>
-                <Button variant="contained" component="label">
-                  Upload Cover Letter
-                  <input type="file" hidden />
-                </Button>
-              </Grid>
+
               <Grid item xs={12}>
                 <TextField
                   label="Message"

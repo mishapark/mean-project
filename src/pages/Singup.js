@@ -3,17 +3,56 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import decode from "jwt-decode";
 
 export const Singup = () => {
+  const navigate = useNavigate();
+  const [formData, setFromDate] = useState({
+    email: "",
+    name: "",
+    password: "",
+  });
+  const { name, email, password } = formData;
+
+  const onChange = (e) => {
+    setFromDate({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    let data = {
+      name: name,
+      email: email,
+      password: password,
+    };
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/user",
+        data,
+        config
+      );
+
+      console.log(response);
+      localStorage.setItem("token", response.data.token);
+      console.log(decode(response.data.token));
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -31,7 +70,12 @@ export const Singup = () => {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <Box component="form" noValidate sx={{ mt: 1 }}>
+        <Box
+          component="form"
+          noValidate
+          sx={{ mt: 1 }}
+          onSubmit={(e) => onSubmit(e)}
+        >
           <TextField
             margin="normal"
             required
@@ -39,7 +83,8 @@ export const Singup = () => {
             id="name"
             label="Full name"
             name="name"
-            autoComplete="name"
+            value={name}
+            onChange={(e) => onChange(e)}
             autoFocus
           />
           <TextField
@@ -48,8 +93,10 @@ export const Singup = () => {
             fullWidth
             id="email"
             label="Email Address"
+            autoComplete="off"
             name="email"
-            autoComplete="email"
+            value={email}
+            onChange={(e) => onChange(e)}
           />
 
           <TextField
@@ -60,7 +107,10 @@ export const Singup = () => {
             label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
+            minLength="4"
+            autoComplete="off"
+            value={password}
+            onChange={(e) => onChange(e)}
           />
 
           <Button
@@ -71,7 +121,7 @@ export const Singup = () => {
           >
             Sign Up
           </Button>
-          <Link href="/login" variant="body2">
+          <Link to="/login" variant="body2">
             Already have an account? Sign in
           </Link>
         </Box>
