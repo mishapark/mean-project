@@ -24,7 +24,7 @@ export const Careers = () => {
 
   const sendGetRequest = async () => {
     try {
-      const response = await axios.get("http://localhost:5006/api/jobs/");
+      const response = await axios.get("http://localhost:5000/api/jobs/");
       console.log(response.data);
       setRows(response.data);
     } catch (err) {

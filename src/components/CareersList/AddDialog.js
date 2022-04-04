@@ -36,7 +36,7 @@ export const AddDialog = ({ open, setOpen }) => {
 
     e.preventDefault();
     axios
-      .post(`http://localhost:5006/api/jobs/`, newJob, {
+      .post(`http://localhost:5000/api/jobs/`, newJob, {
         headers: { "Content-Type": "application/json", "x-auth-token": user },
       })
       .then(function (response) {
@@ -98,7 +98,6 @@ export const AddDialog = ({ open, setOpen }) => {
             <Button
               onClick={() => {
                 handleClose();
-                window.location.reload(false);
               }}
               type="submit"
             >

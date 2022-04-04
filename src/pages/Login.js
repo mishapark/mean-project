@@ -42,7 +42,7 @@ export const Login = () => {
     };
     try {
       const response = await axios.post(
-        "http://localhost:5006/api/auth",
+        "http://localhost:5000/api/auth",
         data,
         config
       );
@@ -50,7 +50,7 @@ export const Login = () => {
       console.log(response);
       localStorage.setItem("token", response.data.token);
       console.log(decode(response.data.token));
-      navigate("/home");
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
