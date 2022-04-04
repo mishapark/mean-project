@@ -3,11 +3,8 @@ import { makeStyles } from "@mui/styles";
 import Link from "@mui/material/Link";
 import MailOutlineIcon from '@mui/icons-material/MailOutlined';
 import { spacing} from "@mui/system";
-import { FormControl, InputLabel, Container, Grid, CssBaseline, CardMedia, CardContent, Card, Typography, Button} from '@mui/material';
-import TextareaAutosize from '@mui/base/TextareaAutosize';
-import EventMap from "../components/Events/EventMap";
-import Map from "../components/Map/Map";
-import { useParams, useLocation } from "react-router-dom";
+import { Container, Grid, CssBaseline, CardMedia, CardContent, Card, Typography} from '@mui/material';
+import { useLocation} from "react-router-dom";
 
 function useQuery() {
     const { search } = useLocation();
@@ -61,6 +58,7 @@ export const Event = (props) => {
     const img = query.get("img")
     const url = query.get("url")
     const address = query.get("address")
+
     return (
       <div>
         <Container component="main" maxWidth="lg">
@@ -117,21 +115,7 @@ export const Event = (props) => {
                 {"Email me about updates"}
             </Link>
         </Container>
-        <Container component="" maxWidth="lg" >
-            <FormControl>
-                <InputLabel htmlFor="my-input">Enter Your Reply</InputLabel>
-                <TextareaAutosize
-                    maxRows={4}
-                    aria-label="maximum height"
-                    placeholder="Maximum 4 rows"
-                    defaultValue=""
-                    style={{ width: 600, marginTop: 50 }}
-                />
-                <Button variant="contained" component="span" style={{ width: 100, marginTop: 10, marginBottom: 10, backgroundColor: "red" }}>
-                    Post
-                </Button>
-            </FormControl>
-        </Container>
+        
       </div>
     );
   };

@@ -91,18 +91,6 @@ const Offers = (props) => {
                                     return (
                                     <div className="offer__slide">
                                         <img src={t.image_url} alt=""/>
-                                        {/* <div style={{
-                                            position: 'absolute', 
-                                            color: 'black', 
-                                            top: '85%', 
-                                            left: '50%', 
-                                            transform: 'translateX(-50%)',
-                                            fontSize: '20px',
-                                            fontWeight: 'bold',
-                                          }} ><Link href={"/event?name=" + t.name + "&city=" + t.city + "&country=" + t.country + "&description=" + t.description + "&img=" + t.image_url + "&url=" + t.event_site_url +
-                                                          "&address=" + t.address}
-                                           >{t.name}</Link>
-                                        </div> */}
                                     </div>
                                     )
                                 })}
