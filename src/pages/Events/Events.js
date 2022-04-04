@@ -95,7 +95,9 @@ const Events = () => {
       <SidePanel />
       <Preview events = {events}/>
       <div className="divider"></div>
-      <Offers featuredEvents = {featuredEvents}/>
+      {!loadingFeatured && 
+        <Offers featuredEvents = {featuredEvents}/>
+      }
       <div className="divider"></div>
       <Promotion />
       <ContactUs />
