@@ -4,21 +4,6 @@ import styles from "./RestaurantsList.module.css";
 import RestaurantCard from "../RestaurantCard/RestaurantCard";
 import { Link } from "react-router-dom";
 
-const DUMMY_RESTS = [
-  {
-    index: "2",
-    picture: "",
-    name: "Richmond Station",
-    rating: 5,
-    numberOfRatings: 765,
-    cuisine: "Canadian",
-    price: "$$$$",
-    location: "Richmondhill",
-    operatingHours: "3:00 PM - 9:00PM",
-    options: ["Delivery", "Takeout"],
-  },
-];
-
 function RestaurantsList({ restaurants }) {
   return restaurants ? (
     <Paper elevation={5} className={styles.container}>

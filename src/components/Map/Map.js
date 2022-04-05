@@ -15,8 +15,8 @@ const Marker = () => {
 function Map({ restaurants }) {
   const mapContainerRef = useRef(null);
 
-  const [lng, setLng] = useState(-79.41);
-  const [lat, setLat] = useState(43.65);
+  const [lng, setLng] = useState(-79.47);
+  const [lat, setLat] = useState(43.67);
   const [zoom, setZoom] = useState(12);
 
   useEffect(async () => {

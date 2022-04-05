@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.pic {
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.notifName {
+  font-size: 18px;
+}
+.notifName:hover {
+  text-decoration: underline;
+}
