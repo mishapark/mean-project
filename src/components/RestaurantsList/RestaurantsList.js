@@ -6,18 +6,6 @@ import { Link } from "react-router-dom";
 
 const DUMMY_RESTS = [
   {
-    index: "1",
-    picture: "",
-    name: "Pai Northern",
-    rating: 4,
-    numberOfRatings: 345,
-    cuisine: "Thai",
-    price: "$$$",
-    location: "Downtown",
-    operatingHours: "4:00 PM - 10:00 PM",
-    options: ["Outdoor", "Indoor"],
-  },
-  {
     index: "2",
     picture: "",
     name: "Richmond Station",
@@ -31,25 +19,27 @@ const DUMMY_RESTS = [
   },
 ];
 
-function RestaurantsList() {
-  return (
+function RestaurantsList({ restaurants }) {
+  return restaurants ? (
     <Paper elevation={5} className={styles.container}>
-      {DUMMY_RESTS.map((r) => (
-        <Link key={r.index} to={r.index} state={r}>
+      {restaurants.map((r) => (
+        <Link key={r._id} to={r._id} state={r}>
           <RestaurantCard
             picture={r.picture}
             name={r.name}
             rating={r.rating}
-            numberOfRatings={r.numberOfRatings}
+            // numberOfRatings={r.numberOfRatings}
             cuisine={r.cuisine}
             price={r.price}
             location={r.location}
-            operatingHours={r.operatingHours}
+            operatingHours={r.hours}
             options={r.options}
           />
         </Link>
       ))}
     </Paper>
+  ) : (
+    "Loading..."
   );
 }
 

@@ -1,41 +1,72 @@
 import React, { useRef, useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 import mapboxgl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 import styles from "./Map.module.css";
+import axios from "axios";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiZWFzdDExNiIsImEiOiJja3p3amI3bjIwMWFjMm5wNGd3ams4bTAxIn0.rAK46NmSQxluVeBizRO86g";
 
-function Map() {
-  const mapContainer = useRef(null);
-  const map = useRef(null);
+const Marker = () => {
+  return <div className={styles.marker} />;
+};
+
+function Map({ restaurants }) {
+  const mapContainerRef = useRef(null);
+
   const [lng, setLng] = useState(-79.41);
   const [lat, setLat] = useState(43.65);
   const [zoom, setZoom] = useState(12);
 
-  useEffect(() => {
-    if (map.current) return; // initialize map only once
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
+  useEffect(async () => {
+    const map = new mapboxgl.Map({
+      container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/streets-v11",
       center: [lng, lat],
       zoom: zoom,
     });
-  });
 
-  useEffect(() => {
-    if (!map.current) return; // wait for map to initialize
-    map.current.on("move", () => {
-      setLng(map.current.getCenter().lng.toFixed(4));
-      setLat(map.current.getCenter().lat.toFixed(4));
-      setZoom(map.current.getZoom().toFixed(2));
+    map.on("move", () => {
+      setLng(map.getCenter().lng.toFixed(4));
+      setLat(map.getCenter().lat.toFixed(4));
+      setZoom(map.getZoom().toFixed(2));
     });
-  });
 
-  return (
-    <div className={styles.container}>
-      <div ref={mapContainer} className={styles.map} />
-    </div>
-  );
+    restaurants.map(async (r) => {
+      try {
+        await axios
+          .get(
+            `https://api.mapbox.com/geocoding/v5/mapbox.places/${r.location}.json?proximity=-79.41,43.65&access_token=${mapboxgl.accessToken}`,
+            {
+              headers: {
+                "x-auth-token": localStorage.getItem("token"),
+              },
+            }
+          )
+          .then((response) => {
+            const ref = React.createRef();
+            ref.current = document.createElement("div");
+            ReactDOM.render(<Marker />, ref.current);
+
+            new mapboxgl.Marker(ref.current)
+              .setLngLat(response.data.features[0].center)
+              .setPopup(
+                new mapboxgl.Popup({ offset: 25 }).setHTML(
+                  `<h3>${r.name}</h3><p>${r.location}</p>`
+                )
+              )
+              .addTo(map);
+          });
+      } catch (err) {
+        console.log(err.message);
+      }
+    });
+
+    return () => map.remove();
+  }, []);
+
+  return <div className={styles.mapContainer} ref={mapContainerRef} />;
 }
 
 export default Map;

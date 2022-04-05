@@ -8,7 +8,7 @@ function RestaurantCard({
   picture,
   name,
   rating,
-  numberOfRatings,
+  // numberOfRatings,
   cuisine,
   price,
   location,
@@ -18,16 +18,13 @@ function RestaurantCard({
   return (
     <Card className={styles.container}>
       <div className={styles.pic}>
-        <img
-          src="https://s3-media0.fl.yelpcdn.com/bphoto/n9RGi8WEuExXkVb2FEGEzQ/ls.jpg"
-          className={styles.img}
-        />
+        <img src={picture} className={styles.img} />
       </div>
       <div className={styles.info}>
         <h2 className={styles.restName}>{name}</h2>
         <div className={styles.rating}>
           <Rating name="read-only" value={rating} readOnly size="small" />
-          <div className={styles.ratingNumber}>{numberOfRatings}</div>
+          {/* <div className={styles.ratingNumber}>{numberOfRatings}</div> */}
         </div>
         <div>
           <span className={styles.tags}>{cuisine}</span>
@@ -38,12 +35,13 @@ function RestaurantCard({
         </div>
         <div className={styles.time}>{operatingHours}</div>
         <div className={styles.options}>
-          {options.map((o) => (
-            <div key={o} className={styles.option}>
-              <DoneIcon color="success" sx={{ fontSize: 20, mr: 0.5 }} />
-              {o}
-            </div>
-          ))}
+          {options &&
+            options.map((o) => (
+              <div key={o} className={styles.option}>
+                <DoneIcon color="success" sx={{ fontSize: 20, mr: 0.5 }} />
+                {o}
+              </div>
+            ))}
         </div>
       </div>
     </Card>
