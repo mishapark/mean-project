@@ -51,6 +51,9 @@ const Navigation = ({ toogleNotifications }) => {
   };
 
   const auth = useContext(AuthContext);
+  const [user, setUser] = React.useState({
+    role: localStorage.getItem("role"),
+  });
 
   return (
     <AppBar position="sticky">
@@ -130,6 +133,15 @@ const Navigation = ({ toogleNotifications }) => {
               {auth.isLoggedIn ? (
                 <li>
                   <Button onClick={auth.logout}>Logout</Button>
+                  {user.role == "Admin" ? (
+                    <li>
+                      <Button>
+                        <Link to="rights">Change user rights</Link>
+                      </Button>
+                    </li>
+                  ) : (
+                    <div></div>
+                  )}
                 </li>
               ) : (
                 <li>
