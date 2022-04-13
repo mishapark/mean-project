@@ -34,7 +34,7 @@ export const UpdateForm = ({ open, setOpen, job, setJob }) => {
 
     e.preventDefault();
     axios
-      .put(`http://localhost:5000/api/jobs/`, job, {
+      .put(`https://bite-mern.herokuapp.com/api/jobs/`, job, {
         headers: { "Content-Type": "application/json", "x-auth-token": user },
       })
       .then(function (response) {

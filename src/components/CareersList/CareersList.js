@@ -10,13 +10,13 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-export const CareersList = ({ rows }) => {
+export const CareersList = ({ rows, search }) => {
   const [id, setId] = React.useState({});
   const handleDelete = (newId) => {
     setId({
       id: newId,
     });
-    axios.delete("http://localhost:5000/api/jobs/", id, {
+    axios.delete("https://bite-mern.herokuapp.com/api/jobs/", id, {
       headers: {
         "Content-Type": "application/json",
         "x-auth-token": localStorage.getItem("token"),
@@ -51,47 +51,59 @@ export const CareersList = ({ rows }) => {
         </TableHead>
         {user.role === "Admin" ? (
           <TableBody>
-            {rows.map((row) => (
-              <TableRow
-                key={row._id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  <Link to={`/careers/${row._id}`}>{row.name}</Link>
-                </TableCell>
-                <TableCell>{row.role}</TableCell>
-                <TableCell>{row.location}</TableCell>
-                <TableCell>
-                  <Button variant="contained">Apply</Button>
-                </TableCell>
-                <TableCell>
-                  <Button
-                    variant="contained"
-                    onClick={() => handleDelete(row._id)}
-                  >
-                    Delete
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
+            {rows
+              .filter((s) =>
+                s.name.toLowerCase().includes(search.toLowerCase())
+              )
+              .map((row) => (
+                <TableRow
+                  key={row._id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    <Link to={`/careers/${row._id}`}>{row.name}</Link>
+                  </TableCell>
+                  <TableCell>{row.role}</TableCell>
+                  <TableCell>{row.location}</TableCell>
+                  <TableCell>
+                    <Link to={`/careers/${row._id}`}>
+                      <Button variant="contained">Apply</Button>
+                    </Link>
+                  </TableCell>
+                  <TableCell>
+                    <Button
+                      variant="contained"
+                      onClick={() => handleDelete(row._id)}
+                    >
+                      Delete
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         ) : (
           <TableBody>
-            {rows.map((row) => (
-              <TableRow
-                key={row._id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  <Link to={`/careers/${row._id}`}>{row.name}</Link>
-                </TableCell>
-                <TableCell>{row.role}</TableCell>
-                <TableCell>{row.location}</TableCell>
-                <TableCell>
-                  <Button variant="contained">Apply</Button>
-                </TableCell>
-              </TableRow>
-            ))}
+            {rows
+              .filter((s) =>
+                s.name.toLowerCase().includes(search.toLowerCase())
+              )
+              .map((row) => (
+                <TableRow
+                  key={row._id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    <Link to={`/careers/${row._id}`}>{row.name}</Link>
+                  </TableCell>
+                  <TableCell>{row.role}</TableCell>
+                  <TableCell>{row.location}</TableCell>
+                  <TableCell>
+                    <Link to={`/careers/${row._id}`}>
+                      <Button variant="contained">Apply</Button>
+                    </Link>
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         )}
       </Table>

@@ -17,6 +17,7 @@ import NotificationCenter from "./components/NotificationCenter/NotificationCent
 import Event from "./pages/Event";
 import ContactUs from "./pages/ContactUs";
 import AuthContext from "./context/AuthContext";
+import { Rights } from "./pages/Rights";
 
 const theme = createTheme({
   palette: {
@@ -55,9 +56,9 @@ function App() {
           <Route index element={<Restaurants />} />
           <Route path=":id" element={<Restaurant />} />
         </Route>
-        <Route path="/login" element={<Login />} />
         <Route path="/events" element={<Events />} />
         <Route path="/event" element={<Event />} />
+        <Route path="/rights" element={<Rights />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/careers">
           <Route index element={<Careers />} />
@@ -77,6 +78,7 @@ function App() {
           <Route index element={<Restaurants />} />
           <Route path=":id" element={<Restaurant />} />
         </Route>
+
         <Route path="/events" element={<Events />} />
         <Route path="/event" element={<Event />} />
         <Route path="/blog" element={<Blog />} />

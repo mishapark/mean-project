@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Container, Typography, Stack, Button } from "@mui/material";
+import {
+  Container,
+  Typography,
+  Stack,
+  Button,
+  TextField,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -9,6 +17,7 @@ import { Chip } from "@mui/material";
 import { CareersList } from "../components/CareersList/CareersList";
 import axios from "axios";
 import { AddDialog } from "../components/CareersList/AddDialog";
+import SearchIcon from "@mui/icons-material/Search";
 
 export const Careers = () => {
   const [roles, setRoles] = useState("");
@@ -20,11 +29,19 @@ export const Careers = () => {
     setLocation(event.target.value);
   };
 
+  const [search, setSearch] = React.useState("");
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
   const [rows, setRows] = React.useState([]);
 
   const sendGetRequest = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/jobs/");
+      const response = await axios.get(
+        "https://bite-mern.herokuapp.com/api/jobs/"
+      );
       console.log(response.data);
       setRows(response.data);
     } catch (err) {
@@ -64,38 +81,24 @@ export const Careers = () => {
       <AddDialog open={open} setOpen={setOpen} />
       <Typography variant="h4">Current job openings</Typography>
       <Grid container spacing={2} sx={{ mt: 2 }}>
-        <Grid item xs={8}>
+        <Grid item xs={12}>
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Roles</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={roles}
-              label="Roles"
-              onChange={handleChange}
-            >
-              <MenuItem value={10}>Support</MenuItem>
-              <MenuItem value={20}>Design</MenuItem>
-              <MenuItem value={30}>Developing</MenuItem>
-            </Select>
+            <TextField
+              label="Search"
+              onChange={(e) => handleSearch(e)}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment>
+                    <IconButton>
+                      <SearchIcon />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
           </FormControl>
         </Grid>
-        <Grid item xs={4}>
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Location</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={location}
-              label="Location"
-              onChange={handleChangeLocation}
-            >
-              <MenuItem value={10}>Moscow, Russia</MenuItem>
-              <MenuItem value={20}>Toronto, Canada</MenuItem>
-              <MenuItem value={30}>New York, USA</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
+
         <Grid item xs={11}>
           <Stack
             direction="row"
@@ -111,7 +114,7 @@ export const Careers = () => {
           <Chip label={`${rows.length} postings`} color="secondary" />
         </Grid>
         <Grid item xs={12}>
-          <CareersList rows={rows}></CareersList>
+          <CareersList rows={rows} search={search}></CareersList>
         </Grid>
       </Grid>
       <br></br>
