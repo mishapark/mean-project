@@ -12,7 +12,9 @@ export const Career = () => {
 
   const sendGetRequest = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/jobs/${id}`);
+      const response = await axios.get(
+        `https://bite-mern.herokuapp.com/api/jobs/${id}`
+      );
       console.log(response.data);
       setJob(response.data);
     } catch (err) {
