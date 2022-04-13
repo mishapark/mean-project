@@ -5,14 +5,10 @@ import SidePanel from "../../components/Events/SidePanel";
 import Preview from "../../components/Events/Preview";
 import Offers from "../../components/Events/Offers";
 import Promotion from "../../components/Events/Promotion";
-<<<<<<< HEAD
-import axios from 'axios';
-import timer from "../../components/Events/Timer"
-=======
-import ContactUs from "../../components/Events/ContactUs";
+import ContactUs from "../ContactUs"
+
 import axios from "axios";
 import timer from "../../components/Events/Timer";
->>>>>>> 82917680c5d490edd6c1f8435884f2555e61e6ba
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -21,7 +17,6 @@ const Events = () => {
   const [loadingFeatured, setLoadingFeatured] = useState(true);
 
   const sendGetRequest = async () => {
-    console.log("in events >>>>>>>");
     try {
       let token = localStorage.getItem("token");
 
@@ -86,19 +81,7 @@ const Events = () => {
     }
   }, [loading, loadingFeatured]);
 
-<<<<<<< HEAD
-    <div>
-      <SidePanel />
-      <Preview events = {events}/>
-      <div className="divider"></div>
-      {!loadingFeatured && 
-        <Offers featuredEvents = {featuredEvents}/>
-      }
-      <div className="divider"></div>
-      <Promotion />
-    </div>
-  );
-=======
+
   if (loading && loadingFeatured) {
     return (
       <>
@@ -117,7 +100,6 @@ const Events = () => {
         <ContactUs />
       </div>
     );
->>>>>>> 82917680c5d490edd6c1f8435884f2555e61e6ba
   }
 };
 export default Events;
