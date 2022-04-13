@@ -13,6 +13,8 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
     "dotenv": "^16.0.0",
+    "emailjs": "^3.8.0",
+    "emailjs-com": "^3.2.0",
     "google-maps-react": "^2.0.6",
     "jwt-decode": "^3.1.2",
     "mapbox-gl": "^2.7.0",

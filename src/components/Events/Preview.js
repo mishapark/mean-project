@@ -19,12 +19,13 @@ const Preview = (events) => {
                             />
                             
                             <div className="tabcontent__descr">
-                                <Link href={"/event?name=" + t.name + "&city=" + t.city + "&country=" + t.country + "&description=" + t.description + "&img=" + t.image_url + "&url=" + t.event_site_url +
-                                 "&address=" + t.address}
-                                
-                                >
+                               
                                     {t.description}
-                                </Link>
+                                    <Link href={"/event?name=" + t.name + "&city=" + t.city + "&country=" + t.country + "&description=" + t.description + "&img=" + t.image_url + "&url=" + t.event_site_url +
+                                    "&address=" + t.address}
+                                    >
+                                        <div>View</div>
+                                    </Link>
                             </div>
                         </div>
                     ))}
@@ -32,7 +33,11 @@ const Preview = (events) => {
                         <h3>Choose your Event</h3>
                         <div className="tabheader__items">
                             {events.events.map((t) => (
-                                <div className="tabheader__item">{t.name}</div>
+                                
+                                <div className="tabheader__item">
+                                    {t.name}
+                                </div>
+                                
                             ))}
                         </div>
                     </div>

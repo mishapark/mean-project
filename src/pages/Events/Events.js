@@ -4,9 +4,7 @@ import tabs from "../../components/Events/Tabs";
 import SidePanel from "../../components/Events/SidePanel";
 import Preview from "../../components/Events/Preview";
 import Offers from "../../components/Events/Offers";
-import Order from "../../components/Events/Order";
 import Promotion from "../../components/Events/Promotion";
-import ContactUs from "../../components/Events/ContactUs";
 import axios from 'axios';
 import timer from "../../components/Events/Timer"
 
@@ -100,7 +98,6 @@ const Events = () => {
       }
       <div className="divider"></div>
       <Promotion />
-      <ContactUs />
     </div>
   );
   }
