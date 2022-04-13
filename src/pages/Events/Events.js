@@ -5,7 +5,6 @@ import SidePanel from "../../components/Events/SidePanel";
 import Preview from "../../components/Events/Preview";
 import Offers from "../../components/Events/Offers";
 import Promotion from "../../components/Events/Promotion";
-import ContactUs from "../ContactUs"
 
 import axios from "axios";
 import timer from "../../components/Events/Timer";
@@ -97,7 +96,6 @@ const Events = () => {
         {!loadingFeatured && <Offers featuredEvents={featuredEvents} />}
         <div className="divider"></div>
         <Promotion />
-        <ContactUs />
       </div>
     );
   }
