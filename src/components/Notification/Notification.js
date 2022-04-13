@@ -11,7 +11,7 @@ function Notification({ notifications, setRequestData }) {
   const deleteNotification = async (id) => {
     try {
       await axios
-        .delete(`http://localhost:5000/api/notifications?id=${id}`)
+        .delete(`https://bite-mern.herokuapp.com/api/notifications?id=${id}`)
         .then(() => setRequestData(new Date()));
     } catch (err) {
       console.log(err.message);

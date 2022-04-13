@@ -50,7 +50,7 @@ export const CareerForm = ({ open, setOpen, jobId }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/application/",
+        "https://bite-mern.herokuapp.com/api/application/",
         data,
         config
       );

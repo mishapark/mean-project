@@ -36,7 +36,7 @@ export const AddDialog = ({ open, setOpen }) => {
 
     e.preventDefault();
     axios
-      .post(`http://localhost:5000/api/jobs/`, newJob, {
+      .post(`https://bite-mern.herokuapp.com/api/jobs/`, newJob, {
         headers: { "Content-Type": "application/json", "x-auth-token": user },
       })
       .then(function (response) {
