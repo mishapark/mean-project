@@ -6,7 +6,7 @@ import { Container, CardMedia, CardContent, Typography } from "@mui/material";
 import Input from "@mui/material/Input";
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -55,7 +55,6 @@ const useStyles = makeStyles((theme) => ({
 
 export const ContactUs = () => {
   const classes = useStyles();
-  const navigate = useNavigate();
   const [formData, setFromDate] = useState({
     cname: "",
     email: "",
@@ -91,10 +90,16 @@ export const ContactUs = () => {
         data,
         config
       );
-
-      console.log(response);
-      navigate("/");
+      Swal.fire({
+        icon: 'success',
+        title: 'We will contact soon'
+      })
     } catch (err) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Ooops, something went wrong',
+        text: 'Please, try again',
+      })
       console.log(err.message);
     }
   };
