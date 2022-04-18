@@ -88,7 +88,7 @@ function Blogs() {
       //   config
       // );
       const response = await axios.get(
-        "https://bite-mern.herokuapp.com//api/blog/"
+        "https://bite-mern.herokuapp.com/api/blog/"
       );
       setBlogs(response.data);
       console.log(response);
