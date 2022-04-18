@@ -6,6 +6,7 @@ import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";
 import Events from "./pages/Events/Events";
 import Blog from "./pages/Blog";
+import BlogPage from "./pages/BlogPage";
 import Restaurants from "./pages/Restaurants";
 import Restaurant from "./pages/Restaurant";
 import Navigation from "./components/Navigation/Navigation";
