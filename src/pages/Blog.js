@@ -131,7 +131,7 @@ const Blog = ({ blog, classes }) => {
           <CardActionArea>
             <CardMedia
               className={classes.media}
-              image="https://picsum.photos/300/200"
+              image={blog.imgUrl}
               title="Contemplative Reptile"
             />
             <CardContent>

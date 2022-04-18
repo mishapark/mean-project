@@ -22,7 +22,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#fff",
   },
   hero: {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/random')`,
+    backgroundImage: (data) =>
+      `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${data.imgUrl})`,
     height: "500px",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -53,16 +54,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Blog() {
-  const classes = useStyles();
-
   const location = useLocation();
   const data = location.state;
+  const classes = useStyles(data);
 
   return (
     <div className="App">
       <Box className={classes.hero}>
         <Box>{data.title}</Box>
       </Box>
+      <Typography gutterBottom variant="h6">
+        Date Published: {data.date}
+      </Typography>
       <Box m={10} p={15} sx={{ border: 1, borderRadius: 16 }}>
         <Typography gutterBottom variant="h6">
           {data.description}
