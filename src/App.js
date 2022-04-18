@@ -3,7 +3,7 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Singup } from "./pages/Singup";
 import { Login } from "./pages/Login";
-import { Home } from "./pages/Home";
+import Home from "./pages/Home";
 import Events from "./pages/Events/Events";
 import Blog from "./pages/Blog";
 import BlogPage from "./pages/BlogPage";

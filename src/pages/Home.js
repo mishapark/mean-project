@@ -11,8 +11,9 @@ import { Button } from "@mui/material";
 import { Container } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useNavigate } from "react-router-dom";
-
-import { spacing } from "@mui/system";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Box, spacing } from "@mui/system";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -31,6 +32,8 @@ const useStyles = makeStyles((theme) => ({
 
   cardMedia: {
     paddingTop: "100%",
+    height: "300",
+    width: "300",
   },
 
   cardContent: {
@@ -38,11 +41,43 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-export const Home = () => {
+const Home = () => {
   const classes = useStyles();
   const navigate = useNavigate();
+  const [topRestaurants, setTopRestaurants] = useState([]);
+
+  useEffect(() => {
+    sendGetRequest();
+  }, [topRestaurants]);
+
+  const sendGetRequest = async () => {
+    try {
+      const config = {
+        headers: {
+          Authorization:
+            "Bearer Tvh58J-u_HLHzoJyB3B_amiAm6WQyC7AhYoTSDBerhb7pSDvSq-X2ZuPrn0WagikTy6TuSQ11lsw76EOqRhDRY6c8uzqq4vQGOVvDY5fLfodhLrT-ZIp1syty0ldYnYx",
+          accept: "application/json",
+          "x-requested-with": "xmlhttprequest",
+          "Access-Control-Allow-Origin": "*",
+        },
+        params: {
+          term: "restaurants",
+          location: "toronto",
+          sort_by: "rating",
+          limit: 12,
+        },
+      };
+
+      const response = await axios.get(
+        "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search",
+        config
+      );
+      setTopRestaurants(response.data.businesses);
+      console.log(response.data.businesses);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div>
@@ -101,25 +136,30 @@ export const Home = () => {
         </div>
 
         <Container className={classes.cardGrid} maxWidth="md">
-          <Grid container spacing={4}>
-            {cards.map(() => (
-              <Grid item>
+          <Box>
+            <Typography variant="h3" align="center" mt={10} mb={10}>
+              Top 'Most Rated' Restaurants
+            </Typography>
+          </Box>
+          <Grid container spacing={3}>
+            {topRestaurants.map((restaurant) => (
+              <Grid item xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
+                    image={restaurant.image_url}
                     title="Image Title"
                   />
                   <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5">
-                      Hotel 1
+                    <Typography gutterBottom variant="h4">
+                      {restaurant.name}
                     </Typography>
                     <Typography gutterBottom variant="h5">
-                      Hotel Details...
+                      Rating: {restaurant.rating}
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
+                    <Button size="small" color="primary" href={restaurant.url}>
                       View
                     </Button>
                   </CardActions>
@@ -132,3 +172,5 @@ export const Home = () => {
     </div>
   );
 };
+
+export default Home;
