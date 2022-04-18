@@ -102,11 +102,11 @@ function Blogs() {
   return (
     <div className="App">
       <Box className={classes.hero}>
-        <Box>Stay Up To Date!</Box>
+        <Box>Stay Up To Date!!</Box>
       </Box>
       <Container maxWidth="lg" className={classes.blogsContainer}>
         <Typography variant="h4" className={classes.blogTitle}>
-          Read our latest Blogs
+          Read our latest Blogs and Stories
         </Typography>
         <Grid container spacing={3}>
           {blogs.map((blog) => (
