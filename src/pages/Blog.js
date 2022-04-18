@@ -87,6 +87,7 @@ function Blogs() {
       //   "http://localhost:5000/api/todos/",
       //   config
       // );
+      // test fix
       const response = await axios.get(
         "https://bite-mern.herokuapp.com/api/blog/"
       );
