@@ -14,6 +14,8 @@ import { CardActionArea } from "@mui/material";
 import { Avatar } from "@mui/material";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import { Pagination } from "@mui/material";
+import { borders } from "@mui/system";
+import { useLocation } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -37,97 +39,35 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   blogsContainer: {
-    paddingTop: theme.spacing(3),
-  },
-  blogTitle: {
-    fontWeight: 800,
-    paddingBottom: theme.spacing(3),
-  },
-  card: {
-    maxWidth: "100%",
+    paddingTop: theme.spacing(10),
   },
   media: {
     height: 240,
   },
-  cardActions: {
-    display: "flex",
-    margin: "0 10px",
-    justifyContent: "space-between",
-  },
-  author: {
-    display: "flex",
-  },
-  paginationContainer: {
-    display: "flex",
-    justifyContent: "center",
+  borderContent: {
+    border: "1px solid black",
+    width: 80,
+    height: 80,
+    borderRadius: 8,
   },
 }));
 
 function Blog() {
   const classes = useStyles();
 
-  const cards = [1, 2];
+  const location = useLocation();
+  const data = location.state;
 
   return (
     <div className="App">
       <Box className={classes.hero}>
-        <Box>Stay Up To Date!</Box>
+        <Box>{data.title}</Box>
       </Box>
-      <Container maxWidth="lg" className={classes.blogsContainer}>
-        <Typography variant="h4" className={classes.blogTitle}>
-          Articles
+      <Box m={10} p={15} sx={{ border: 1, borderRadius: 16 }}>
+        <Typography gutterBottom variant="h6">
+          {data.description}
         </Typography>
-        <Grid container spacing={3}>
-          {cards.map(() => (
-            <Grid item xs={12} sm={6} md={4}>
-              <Card className={classes.card}>
-                <CardActionArea>
-                  <CardMedia
-                    className={classes.media}
-                    image="https://source.unsplash.com/random"
-                    title="Contemplative Reptile"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Hotel Blog
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      Hotel chain, the best chain!
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions className={classes.cardActions}>
-                  <Box className={classes.author}>
-                    <Avatar src="https://source.unsplash.com/random" />
-                    <Box ml={2}>
-                      <Typography variant="subtitle2" component="p">
-                        Hotel Guy
-                      </Typography>
-                      <Typography
-                        variant="subtitle2"
-                        color="textSecondary"
-                        component="p"
-                      >
-                        March 01, 2021
-                      </Typography>
-                    </Box>
-                  </Box>
-                  <Box>
-                    <BookmarkBorderIcon />
-                  </Box>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-        <Box my={4} className={classes.paginationContainer}>
-          <Pagination count={10} />
-        </Box>
-      </Container>
+      </Box>
     </div>
   );
 }
