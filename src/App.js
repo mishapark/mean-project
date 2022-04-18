@@ -50,11 +50,11 @@ function App() {
   // let appRoutes;
   // if (isLoggedIn) {
   //   appRoutes = (
-      
+
   //   );
   // } else {
   //   appRoutes = (
-      
+
   //   );
   // }
 
@@ -67,7 +67,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <Navigation toogleNotifications={handleNotificationToggle} />
-          {isLoggedIn && 
+          {isLoggedIn && (
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/restaurants">
@@ -77,7 +77,10 @@ function App() {
               <Route path="/events" element={<Events />} />
               <Route path="/event" element={<Event />} />
               <Route path="/rights" element={<Rights />} />
-              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog">
+                <Route index element={<Blog />} />
+                <Route path=":_id" element={<BlogPage />} />
+              </Route>
               <Route path="/careers">
                 <Route index element={<Careers />} />
                 <Route path=":id" element={<Career />} />
@@ -85,27 +88,31 @@ function App() {
               <Route path="/contact" element={<ContactUs />} />
               <Route path="/signup" element={<Singup />} />
             </Routes>
-        }
-        {!isLoggedIn &&
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {/* <Route path='/' element={<Login/>} /> */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/restaurants">
-              <Route index element={<Restaurants />} />
-              <Route path=":id" element={<Restaurant />} />
-            </Route>
+          )}
+          {!isLoggedIn && (
+            <Routes>
+              <Route path="/" element={<Home />} />
+              {/* <Route path='/' element={<Login/>} /> */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/restaurants">
+                <Route index element={<Restaurants />} />
+                <Route path=":id" element={<Restaurant />} />
+              </Route>
 
-            <Route path="/events" element={<Events />} />
-            <Route path="/event" element={<Event />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/signup" element={<Singup />} />
-            <Route path="/careers">
-              <Route index element={<Careers />} />
-              <Route path=":id" element={<Career />} />
-            </Route>
-            <Route path="/contact" element={<ContactUs />} />
-          </Routes>}
+              <Route path="/events" element={<Events />} />
+              <Route path="/event" element={<Event />} />
+              <Route path="/blog">
+                <Route index element={<Blog />} />
+                <Route path=":_id" element={<BlogPage />} />
+              </Route>
+              <Route path="/signup" element={<Singup />} />
+              <Route path="/careers">
+                <Route index element={<Careers />} />
+                <Route path=":id" element={<Career />} />
+              </Route>
+              <Route path="/contact" element={<ContactUs />} />
+            </Routes>
+          )}
           <NotificationCenter
             notificationsOpen={notificationsOpen}
             toogleNotifications={handleNotificationToggle}
