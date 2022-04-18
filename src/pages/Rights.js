@@ -33,7 +33,7 @@ export const Rights = () => {
   const handleSubmitData = (id) => {
     axios
       .put(
-        `http://localhost:5000/api/user/`,
+        `https://bite-mern.herokuapp.com/api/user/`,
         { _id: id },
         {
           headers: { "Content-Type": "application/json" },
