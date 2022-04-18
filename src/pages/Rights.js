@@ -16,7 +16,9 @@ export const Rights = () => {
   const [users, setUsers] = React.useState([]);
   const sendGetRequest = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/user/");
+      const response = await axios.get(
+        "https://bite-mern.herokuapp.com/api/user/"
+      );
       console.log(response.data);
       setUsers(response.data);
     } catch (err) {
