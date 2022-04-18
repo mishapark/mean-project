@@ -7,6 +7,7 @@ import { Home } from "./pages/Home";
 import Events from "./pages/Events/Events";
 import Blog from "./pages/Blog";
 import BlogPage from "./pages/BlogPage";
+import BlogAdd from "./pages/BlogAdd";
 import Restaurants from "./pages/Restaurants";
 import Restaurant from "./pages/Restaurant";
 import Navigation from "./components/Navigation/Navigation";
@@ -78,6 +79,7 @@ function App() {
               <Route path="/events" element={<Events />} />
               <Route path="/event" element={<Event />} />
               <Route path="/rights" element={<Rights />} />
+              <Route path="/blogadd" element={<BlogAdd />} />
               <Route path="/blog">
                 <Route index element={<Blog />} />
                 <Route path=":_id" element={<BlogPage />} />
@@ -102,6 +104,7 @@ function App() {
 
               <Route path="/events" element={<Events />} />
               <Route path="/event" element={<Event />} />
+              <Route path="/blogadd" element={<BlogAdd />} />
               <Route path="/blog">
                 <Route index element={<Blog />} />
                 <Route path=":_id" element={<BlogPage />} />
