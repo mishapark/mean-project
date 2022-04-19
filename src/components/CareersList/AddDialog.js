@@ -60,11 +60,13 @@ export const AddDialog = ({ open, setOpen }) => {
               <TextField
                 label="Job name"
                 name="name"
+                required
                 onChange={(e) => handleInput(e)}
               ></TextField>
               <TextField
                 label="Location"
                 name="location"
+                required
                 onChange={(e) => handleInput(e)}
               ></TextField>
               <Autocomplete
@@ -77,16 +79,19 @@ export const AddDialog = ({ open, setOpen }) => {
               <TextField
                 label="Expirience"
                 name="expirience"
+                required
                 onChange={(e) => handleInput(e)}
               ></TextField>
               <TextField
                 label="Role"
                 name="role"
+                required
                 onChange={(e) => handleInput(e)}
               ></TextField>
               <TextField
                 label="Description"
                 name="description"
+                required
                 multiline
                 rows={5}
                 onChange={(e) => handleInput(e)}

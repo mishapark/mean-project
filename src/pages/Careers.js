@@ -20,15 +20,6 @@ import { AddDialog } from "../components/CareersList/AddDialog";
 import SearchIcon from "@mui/icons-material/Search";
 
 export const Careers = () => {
-  const [roles, setRoles] = useState("");
-  const handleChange = (event) => {
-    setRoles(event.target.value);
-  };
-  const [location, setLocation] = useState("");
-  const handleChangeLocation = (event) => {
-    setLocation(event.target.value);
-  };
-
   const [search, setSearch] = React.useState("");
 
   const handleSearch = (e) => {
@@ -62,6 +53,10 @@ export const Careers = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const [user, setUser] = React.useState({
+    role: localStorage.getItem("role"),
+  });
 
   return (
     <Container maxWidth="lg">
@@ -105,9 +100,13 @@ export const Careers = () => {
             sx={{ display: "flow", justifyContent: "space-between" }}
           >
             <Typography variant="h6">Postings</Typography>
-            <Button variant="contained" onClick={handleClickOpen}>
-              Add Posting
-            </Button>
+            {user.role === "Admin" ? (
+              <Button variant="contained" onClick={handleClickOpen}>
+                Add Posting
+              </Button>
+            ) : (
+              <></>
+            )}
           </Stack>
         </Grid>
         <Grid item xs={1}>

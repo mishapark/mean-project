@@ -113,7 +113,7 @@ export const Login = () => {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2, backgroundColor: "#3F50B5" }}
+            sx={{ mt: 3, mb: 2 }}
           >
             Sign In
           </Button>

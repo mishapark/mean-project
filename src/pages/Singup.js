@@ -107,8 +107,8 @@ export const Singup = () => {
             type="password"
             id="password"
             minLength="4"
-            autoComplete="new-password"
             value={password}
+            autoComplete="new-password"
             onChange={(e) => onChange(e)}
           />
 
@@ -116,7 +116,7 @@ export const Singup = () => {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2, backgroundColor: "#3F50B5" }}
+            sx={{ mt: 3, mb: 2 }}
           >
             Sign Up
           </Button>

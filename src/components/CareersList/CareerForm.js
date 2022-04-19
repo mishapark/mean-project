@@ -76,6 +76,7 @@ export const CareerForm = ({ open, setOpen, jobId }) => {
                   label="Full name"
                   variant="outlined"
                   name="name"
+                  required
                   onChange={(e) => onChange(e)}
                   fullWidth
                 />
@@ -85,6 +86,7 @@ export const CareerForm = ({ open, setOpen, jobId }) => {
                   label="Email"
                   variant="outlined"
                   name="email"
+                  required
                   onChange={(e) => onChange(e)}
                   fullWidth
                 />
@@ -111,6 +113,7 @@ export const CareerForm = ({ open, setOpen, jobId }) => {
                   variant="outlined"
                   fullWidth
                   multiline
+                  required
                   name="message"
                   onChange={(e) => onChange(e)}
                   rows={3}

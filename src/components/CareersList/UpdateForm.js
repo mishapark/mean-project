@@ -58,18 +58,21 @@ export const UpdateForm = ({ open, setOpen, job, setJob }) => {
               <TextField
                 label="Job name"
                 name="name"
+                required
                 value={job.name}
                 onChange={(e) => handleInput(e)}
               ></TextField>
               <TextField
                 label="Location"
                 name="location"
+                required
                 value={job.location}
                 onChange={(e) => handleInput(e)}
               ></TextField>
               <Autocomplete
                 disablePortal
                 name="type"
+                required
                 value={job.type}
                 options={["Part time", "Full time"]}
                 onInputChange={(event, value) => handleSelect(event, value)}
@@ -78,18 +81,21 @@ export const UpdateForm = ({ open, setOpen, job, setJob }) => {
               <TextField
                 label="Expirience"
                 name="expirience"
+                required
                 value={job.expirience}
                 onChange={(e) => handleInput(e)}
               ></TextField>
               <TextField
                 label="Role"
                 name="role"
+                required
                 value={job.role}
                 onChange={(e) => handleInput(e)}
               ></TextField>
               <TextField
                 label="Description"
                 name="description"
+                required
                 multiline
                 value={job.description}
                 rows={5}
