@@ -141,7 +141,7 @@ const BlogAdd = () => {
               <br></br>
               <br></br>
 
-              <input type="submit" value="Add Task" />
+              <input type="submit" value="Add Blog" />
             </form>
           </Box>
         </Box>
