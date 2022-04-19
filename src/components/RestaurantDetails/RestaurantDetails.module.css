@@ -3,10 +3,8 @@
   flex-direction: column;
   justify-content: flex-end;
   color: white;
-  height: 30vh;
+  height: 80vh;
   font-size: 18px;
-  background: url("https://static.vecteezy.com/system/resources/previews/001/959/920/non_2x/blurred-busy-restaurant-background-free-photo.JPG")
-    center bottom no-repeat;
   background-size: cover;
   padding-bottom: 40px;
 }

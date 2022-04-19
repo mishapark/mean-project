@@ -6,7 +6,13 @@ import styles from "./RestaurantDetails.module.css";
 function RestaurantDetails({ data }) {
   return (
     <>
-      <div className={styles.upper}>
+      <div
+        className={styles.upper}
+        style={{
+          background: `url(${data.picture})
+    center bottom no-repeat`,
+        }}
+      >
         <Container disableGutters>
           <h1 className={styles.name}>{data.name}</h1>
           <div className={styles.rating}>
